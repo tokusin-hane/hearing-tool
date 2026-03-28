@@ -821,7 +821,7 @@ const INDUSTRY_DATA = {
   seni: {
     label: '繊維・衣服関連',
     processes: ['前紡・精紡・合撚糸工程','織物製造（製織・仕上工程）','染色（糸・布浸染）','靴下製造','ニット製品製造','婦人子供服製造','紳士服製造','寝具製品製造','その他縫製作業'],
-    systems: {tokutei_kaigai:false, tokutei_kokunai:false, ikusei:false, gijin:false},
+    systems: {tokutei_kaigai:false, tokutei_kokunai:false, ikusei:false, gijin:true},
     note: {type:'warn', text:'⚠️ 繊維・衣服関連は特定技能・育成就労の対象外です。<strong>技能実習（育成就労施行前の2027年3月まで）</strong>または<strong>技術・人文知識・国際業務（管理・企画職）</strong>のみ対応可能です。現場作業員の新規受入れは2027年3月の技能実習終了後は難しくなります。'}
   },
   kagaku: {
@@ -857,7 +857,7 @@ const INDUSTRY_DATA = {
   jidosha_unso: {
     label: '自動車運送業',
     processes: ['バス運転手（路線・観光・高速等）','タクシー運転手','トラック運転手（一般貨物）','トラック運転手（冷蔵・冷凍）'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:false},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:true},
     note: {type:'warn', text:'⚠️ 自動車運送業は2024年新設。<strong>育成就労・技人国の対象外</strong>です。バス・タクシーは第二種運転免許＋JLPT N3が必要。日本の運転免許取得が必須のため、海外からの採用には時間がかかります。'}
   },
   nogyo: {
@@ -887,7 +887,7 @@ const INDUSTRY_DATA = {
   biru: {
     label: 'ビルクリーニング',
     processes: ['建築物内部清掃（床・窓・トイレ等）','定期清掃（ワックス・高圧洗浄等）'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:false},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:true},
     note: {type:'info', text:'ℹ️ ビルクリーニング分野は育成就労（旧技能実習）の対象外です。'}
   },
   jidosha_seib: {
@@ -899,7 +899,7 @@ const INDUSTRY_DATA = {
   koku: {
     label: '航空業',
     processes: ['空港グランドハンドリング（地上走行支援・手荷物等）','航空機整備（機体・装備品等）'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:false},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:true},
     note: {type:'warn', text:'⚠️ 航空分野は育成就労（旧技能実習）の対象外です。また自動車運送業と同様、育成就労の対象分野から除外されています。'}
   },
   shukuhaku: {
@@ -1102,7 +1102,7 @@ function calcGrants(){
     gs.push({name:'トライアル雇用助成金',scene:'試用雇用期間の賃金補助（最大3ヶ月）',amount:40000*3*p,sub:`月4万円×3ヶ月×${p}人`,color:'#D97706',
       desc:'試用雇用期間中の賃金を補助。月額4万円×最長3ヶ月。採用リスクを軽減できます。'});}
   if(S.sup.has('sei')){
-    const u=sm?570000:427500;
+    const u=sm?800000:600000;
     gs.push({name:'キャリアアップ助成金',scene:'有期→正社員転換・処遇改善',amount:u*p,sub:`${fmt(u)}円/人×${p}人`,color:'#5B21B6',
       desc:`有期→正規転換・賃金引き上げへの助成。中小企業は1人あたり最大${fmt(u)}円。`});}
   // 技能実習選択時は監理費等を追記
