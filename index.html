@@ -11,6 +11,7 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj4KICA8cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjM2IiBmaWxsPSIjMUUyNzYxIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjE5MiIgaGVpZ2h0PSI2MCIgcng9IjM2IiBmaWxsPSIjMEQ5NDg4Ii8+CiAgPHJlY3QgeD0iMCIgeT0iMzAiIHdpZHRoPSIxOTIiIGhlaWdodD0iMzAiIGZpbGw9IiMwRDk0ODgiLz4KICA8dGV4dCB4PSI5NiIgeT0iNzYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjI88L3RleHQ+CiAgPHRleHQgeD0iOTYiIHk9IjEyOCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5aSW5Zu95Lq66ZuH55SoPC90ZXh0PgogIDx0ZXh0IHg9Ijk2IiB5PSIxNTIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7jg5LjgqLjg6rjg7PjgrDvvIbmj5DmoYg8L3RleHQ+CiAgPHRleHQgeD0iOTYiIHk9IjE3MiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuODiOOCr+OCt+ODs+OCsOODq+ODvOODlzwvdGV4dD4KPC9zdmc+">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj4KICA8cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjM2IiBmaWxsPSIjMUUyNzYxIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjE5MiIgaGVpZ2h0PSI2MCIgcng9IjM2IiBmaWxsPSIjMEQ5NDg4Ii8+CiAgPHJlY3QgeD0iMCIgeT0iMzAiIHdpZHRoPSIxOTIiIGhlaWdodD0iMzAiIGZpbGw9IiMwRDk0ODgiLz4KICA8dGV4dCB4PSI5NiIgeT0iNzYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPvCfjI88L3RleHQ+CiAgPHRleHQgeD0iOTYiIHk9IjEyOCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+5aSW5Zu95Lq66ZuH55SoPC90ZXh0PgogIDx0ZXh0IHg9Ijk2IiB5PSIxNTIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjUwMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjgpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7jg5LjgqLjg6rjg7PjgrDvvIbmj5DmoYg8L3RleHQ+CiAgPHRleHQgeD0iOTYiIHk9IjE3MiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNikiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuODiOOCr+OCt+ODs+OCsOODq+ODvOODlzwvdGV4dD4KPC9zdmc+">
 <title>外国人雇用 ヒアリング＆提案ツール</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
   --blue:#2563AB;--teal:#0D9488;--purp:#5B21B6;
@@ -182,6 +183,23 @@ main{max-width:760px;margin:0 auto;padding:28px 20px 100px;}
 .cp-box small{display:block;font-size:10px;font-weight:400;opacity:.85;margin-top:2px;}
 .cp-arr{color:var(--border);font-size:18px;}
 
+
+/* 見積ボックス */
+.estimate-box{background:white;border:2px solid var(--teal);border-radius:14px;padding:20px 22px;margin-top:18px;}
+.estimate-title{font-size:14px;font-weight:800;color:var(--teal);margin-bottom:12px;}
+.estimate-section{margin-bottom:12px;}
+.estimate-label{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:.06em;margin-bottom:6px;}
+.estimate-item{font-size:13px;color:var(--dark);padding:2px 0 2px 8px;line-height:1.7;}
+.estimate-total{background:var(--lgray);border-radius:7px;padding:10px 14px;font-size:15px;font-weight:800;color:var(--teal);margin-top:8px;}
+.estimate-country-note{background:#EFF6FF;border:1px solid #93C5FD;border-radius:7px;padding:8px 12px;font-size:11.5px;color:#1D4ED8;margin-bottom:8px;line-height:1.6;}
+.estimate-caution{font-size:11px;color:var(--gray);line-height:1.8;border-top:1px solid var(--border);padding-top:8px;margin-top:4px;}
+/* 分野別追加要件チェックブロック */
+.extra-req-block{background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:14px;padding:20px 22px;}
+.extra-req-title{font-size:14px;font-weight:800;color:#92400E;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.extra-req-note{font-size:11.5px;color:#92400E;background:#FEF3C7;border-radius:7px;padding:9px 12px;line-height:1.7;margin-bottom:4px;}
+.extra-req-item{background:white;border:1.5px solid #FDE68A;border-radius:10px;padding:14px 16px;}
+.extra-req-item-title{font-size:13.5px;font-weight:700;color:var(--dark);margin-bottom:2px;}
+
 /* 助成金 */
 .grant-list{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
 .grant-card{border:1.5px solid var(--border);border-radius:12px;overflow:hidden;background:white;}
@@ -189,12 +207,7 @@ main{max-width:760px;margin:0 auto;padding:28px 20px 100px;}
 .gt-bar{width:4px;min-height:36px;border-radius:2px;flex-shrink:0;}
 .gt-name{font-size:13.5px;font-weight:700;color:var(--dark);}
 .gt-scene{font-size:11.5px;color:var(--gray);margin-top:2px;line-height:1.5;}
-.gt-amount{font-size:16px;font-weight:900;flex-shrink:0;white-space:nowrap;margin-left:auto;}
-.gt-amount small{display:block;font-size:11px;font-weight:400;color:var(--gray);text-align:right;margin-top:1px;}
 .grant-desc{background:var(--lgray);border-top:1px solid var(--border);padding:11px 17px;font-size:12px;color:var(--gray);line-height:1.75;}
-.total-box{background:linear-gradient(135deg,#134E4A,#0D9488);border-radius:11px;padding:17px 20px;display:flex;align-items:center;justify-content:space-between;color:white;margin-bottom:18px;flex-wrap:wrap;gap:8px;}
-.total-box .tl{font-size:13.5px;font-weight:700;opacity:.9;}
-.total-box .tv{font-size:24px;font-weight:900;}
 
 /* ═══ サマリー ═══ */
 .summary-wrap{background:white;border-radius:16px;overflow:hidden;border:1.5px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,0.08);}
@@ -246,9 +259,47 @@ footer strong{color:var(--gold);}
       <p class="h-sub">トクシングループ ― ヒアリングから提案まで一気通貫</p>
     </div>
   </div>
-  <button class="hdr-btn" onclick="reset()">↺ リセット</button>
+  <div style="display:flex;align-items:center;gap:10px"><div id="user-info" style="display:none;font-size:11px;color:var(--gray)"><span id="user-email-display"></span><button onclick="doLogout()" style="margin-left:8px;background:none;border:1px solid var(--border);border-radius:5px;padding:3px 8px;font-size:11px;cursor:pointer;color:var(--gray);">ログアウト</button></div><button class="hdr-btn" onclick="reset()">↺ リセット</button></div>
 </header>
 <div class="prog-wrap" id="prog"></div>
+
+<!-- ログイン画面 -->
+<div id="login-screen" style="display:none;position:fixed;inset:0;background:#F8FAFC;z-index:999;display:flex;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:white;border:1.5px solid var(--border);border-radius:20px;padding:36px 32px;max-width:400px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,0.10);">
+    <div style="text-align:center;margin-bottom:28px;">
+      <div style="background:linear-gradient(135deg,var(--blue),var(--teal));border-radius:14px;width:56px;height:56px;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px;">🌏</div>
+      <div style="font-size:18px;font-weight:800;color:var(--dark);">外国人雇用 ヒアリングツール</div>
+      <div style="font-size:12px;color:var(--gray);margin-top:4px;">トクシングループ</div>
+    </div>
+    <div style="margin-bottom:14px;">
+      <label style="font-size:12px;font-weight:700;color:var(--gray);display:block;margin-bottom:6px;">メールアドレス</label>
+      <input id="login-email" type="email" placeholder="email@example.com"
+        style="width:100%;background:var(--lgray);border:1.5px solid var(--border);border-radius:9px;padding:12px 15px;font-family:inherit;font-size:14px;color:var(--dark);outline:none;transition:.15s;"
+        onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'"
+        onkeydown="if(event.key==='Enter')document.getElementById('login-pass').focus()">
+    </div>
+    <div style="margin-bottom:20px;">
+      <label style="font-size:12px;font-weight:700;color:var(--gray);display:block;margin-bottom:6px;">パスワード</label>
+      <input id="login-pass" type="password" placeholder="••••••••"
+        style="width:100%;background:var(--lgray);border:1.5px solid var(--border);border-radius:9px;padding:12px 15px;font-family:inherit;font-size:14px;color:var(--dark);outline:none;transition:.15s;"
+        onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'"
+        onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button onclick="doLogin()"
+      style="width:100%;background:linear-gradient(135deg,var(--blue),var(--teal));color:white;border:none;border-radius:11px;font-family:inherit;font-size:16px;font-weight:700;padding:14px;cursor:pointer;transition:.15s;">
+      ログイン
+    </button>
+    <div id="login-error" style="margin-top:12px;font-size:12.5px;color:#DC2626;text-align:center;display:none;"></div>
+    <div id="login-loading" style="margin-top:12px;font-size:12.5px;color:var(--gray);text-align:center;display:none;">ログイン中...</div>
+  </div>
+</div>
+
+<!-- ログイン済みユーザー表示（ヘッダー右側） -->
+<div id="user-info" style="display:none;font-size:11px;color:var(--gray);text-align:right;">
+  <span id="user-email-display"></span>
+  <button onclick="doLogout()" style="margin-left:8px;background:none;border:1px solid var(--border);border-radius:5px;padding:3px 8px;font-size:11px;cursor:pointer;color:var(--gray);">ログアウト</button>
+</div>
+
 <main>
 
 <!-- STEP1 基本情報 -->
@@ -257,6 +308,9 @@ footer strong{color:var(--gold);}
     <div class="sec-step">STEP 1 / 5　① 基本情報</div>
     <div class="sec-title">御社の<em>基本情報</em>を教えてください</div>
     <div class="sec-sub">ヒアリングシートの①基本情報に対応します</div>
+    <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:9px;padding:11px 15px;font-size:12px;color:#15803D;margin-bottom:18px;line-height:1.7">
+      <strong>📋 ご利用にあたって：</strong>本ツールは制度の方向性判断・初期ヒアリング支援を目的としたものです。実際の在留資格取得可否・受入可否は、業務内容、事業所要件、最新制度、個別審査により異なります。最終判断は行政書士・社労士等の専門家確認を推奨します。
+    </div>
     <div class="field">
       <label>企業名 Company<span class="req">*</span></label>
       <input type="text" id="f-company" placeholder="例：○○製造株式会社" oninput="chk1()">
@@ -331,6 +385,20 @@ footer strong{color:var(--gold);}
       </div>
     </div>
     <div class="field">
+      <label>採用予定国（任意）</label>
+      <div class="check-grid" id="country-grp" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+        <div class="check-item" onclick="pickCountry(this,'vietnam')"><div class="check-box"></div>
+          <div><div class="ck-label">🇻🇳 ベトナム</div><div class="ck-sub">基準</div></div></div>
+        <div class="check-item" onclick="pickCountry(this,'indonesia')"><div class="check-box"></div>
+          <div><div class="ck-label">🇮🇩 インドネシア</div><div class="ck-sub">粗利◎</div></div></div>
+        <div class="check-item" onclick="pickCountry(this,'myanmar')"><div class="check-box"></div>
+          <div><div class="ck-label">🇲🇲 ミャンマー</div><div class="ck-sub"></div></div></div>
+        <div class="check-item selected" onclick="pickCountry(this,'undecided')"><div class="check-box" style="background:var(--teal);border-color:var(--teal);color:white">✓</div>
+          <div><div class="ck-label">🌐 未定</div><div class="ck-sub">標準で算出</div></div></div>
+      </div>
+      <div style="font-size:11px;color:var(--gray);margin-top:6px">※国により費用は変動します（未定の場合は標準で算出）</div>
+    </div>
+    <div class="field">
       <label>メールアドレス</label>
       <input type="email" id="f-email" placeholder="例：yamada@example.co.jp">
     </div>
@@ -375,7 +443,7 @@ footer strong{color:var(--gold);}
       </div>
       <div class="field">
         <label>希望入社時期</label>
-        <div id="date-hint" style="font-size:11.5px;color:var(--gray);margin-bottom:6px;line-height:1.5;">⬇ 制度によって選択可能な最短日が変わります</div>
+        <div id="date-hint" style="font-size:11.5px;color:var(--gray);margin-bottom:6px;line-height:1.5;">⬇ 制度によって就労開始の目安が変わります（目安表示・要確認）</div>
         <input type="date" id="f-timing-date" class="field-input" style="width:100%;background:var(--lgray);border:1.5px solid var(--border);border-radius:9px;padding:11px 15px;font-family:inherit;font-size:14px;color:var(--dark);outline:none;margin-bottom:6px;display:block;transition:.15s;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
         <div id="date-min-note" style="font-size:11px;color:#DC2626;margin-bottom:6px;display:none;"></div>
         <input type="text" id="f-timing" placeholder="または自由記入：例 2026年秋ごろ" style="width:100%;background:var(--lgray);border:1.5px solid var(--border);border-radius:9px;padding:10px 15px;font-family:inherit;font-size:13px;color:var(--dark);outline:none;transition:.15s;display:block;" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'">
@@ -540,13 +608,78 @@ footer strong{color:var(--gold);}
 
 </main>
 <footer>
-  <strong>⚠ 金額はすべて目安です。</strong>実際の支給額・適用可否は要件により異なります。必ず社労士等の専門家にご確認ください。
+  ⚠ 本ツールで表示される内容は参考情報です。助成金の支給額・対象可否は年度・条件等により異なるため、必ず行政書士・社労士等の専門家にご確認ください。
 </footer>
 
 <script>
+// ════ Supabase Auth ════
+const _sb = supabase.createClient(
+  'https://ujpgjhbsafhtbubrktrm.supabase.co',
+  'sb_publishable_wymsscaB_WUutrPr-VpcTA_LBGGn96T'
+);
+let _currentUser = null;
+
+function showLoginScreen(){
+  document.getElementById('login-screen').style.display='flex';
+  document.querySelector('header').style.display='none';
+  document.querySelector('.prog-wrap').style.display='none';
+  document.querySelector('main').style.display='none';
+  document.querySelector('footer').style.display='none';
+}
+
+function showAppScreen(user){
+  _currentUser = user;
+  document.getElementById('login-screen').style.display='none';
+  document.querySelector('header').style.display='';
+  document.querySelector('.prog-wrap').style.display='';
+  document.querySelector('main').style.display='';
+  document.querySelector('footer').style.display='';
+  document.getElementById('user-info').style.display='block';
+  document.getElementById('user-email-display').textContent = user.email;
+}
+
+async function doLogin(){
+  const email = document.getElementById('login-email').value.trim();
+  const pass  = document.getElementById('login-pass').value;
+  const errEl = document.getElementById('login-error');
+  const loadEl= document.getElementById('login-loading');
+  errEl.style.display='none';
+  loadEl.style.display='block';
+  const {data, error} = await _sb.auth.signInWithPassword({email, password:pass});
+  loadEl.style.display='none';
+  if(error){
+    errEl.textContent = 'ログインに失敗しました：' + error.message;
+    errEl.style.display='block';
+    return;
+  }
+  showAppScreen(data.user);
+}
+
+async function doLogout(){
+  await _sb.auth.signOut();
+  _currentUser = null;
+  showLoginScreen();
+}
+
+// 起動時セッション確認
+(async()=>{
+  // まず全画面を隠す
+  document.querySelector('header').style.display='none';
+  document.querySelector('.prog-wrap').style.display='none';
+  document.querySelector('main').style.display='none';
+  document.querySelector('footer').style.display='none';
+
+  const {data:{session}} = await _sb.auth.getSession();
+  if(session){
+    showAppScreen(session.user);
+  } else {
+    showLoginScreen();
+  }
+})();
+
 // ════ STATE ════
 const S={
-  company:'',industry:'',process:'',size:'',area:'',person:'',tel:'',email:'',
+  company:'',industry:'',process:'',size:'',area:'',person:'',tel:'',email:'',country:'',
   purpose:new Set(),hireNum:3,timing:'',
   skills:{},  // {name: level}
   want:'',ng:new Set(),jp:null,
@@ -577,19 +710,21 @@ function showSystemAuto(){
   const indKey=document.getElementById('f-industry').value;
   const indData=INDUSTRY_DATA[indKey];
 
-  // 全制度が使えない業種（繊維等）→ 技能実習のみ
-  const allUnavailable = indData && !indData.systems.tokutei_kaigai && !indData.systems.tokutei_kokunai && !indData.systems.ikusei && !indData.systems.gijin;
+  const allUnavailable = indData && !indData.systems.tokutei_kaigai && !indData.systems.tokutei_kokunai && !indData.systems.ikusei && indData.systems.ginou===false;
   if(allUnavailable){ renderSystemCard('r_ginou'); return; }
 
   let rid;
   if(hasTraining && !hasImmediate){
     if(indData && !indData.systems.ikusei && indData.systems.tokutei_kaigai) rid='r_overseas';
-    else if(indData && !indData.systems.ikusei && !indData.systems.tokutei_kaigai) rid='r_gijin';
+    else if(indData && !indData.systems.ikusei && !indData.systems.tokutei_kaigai) rid='r_ginou';
     else rid='r_ikusei';
   } else {
-    if(indData && !indData.systems.tokutei_kaigai && indData.systems.gijin) rid='r_gijin';
-    else if(indData && !indData.systems.tokutei_kaigai && !indData.systems.gijin) rid='r_ginou';
-    else rid='r_overseas';
+    // 国内・海外ともに partial も含め選択肢に含める
+    const canDomestic = !indData || indData.systems.tokutei_kokunai===true || indData.systems.tokutei_kokunai==='partial';
+    const canOverseas = !indData || indData.systems.tokutei_kaigai===true || indData.systems.tokutei_kaigai==='partial';
+    if(canOverseas) rid='r_overseas';
+    else if(canDomestic) rid='r_domestic';
+    else rid='r_ginou';
   }
   renderSystemCard(rid);
 }
@@ -618,6 +753,188 @@ const DOMESTIC_TIPS = `
     </div>
   </div>`;
 
+// ════ 分野別追加要件チェックブロック ════
+function buildExtraReqBlock(indKey, rid){
+  const isTokutei = rid==='r_domestic'||rid==='r_overseas';
+  if(!indKey) return '';
+
+  // ── 繊維：特定技能の追加4要件 ──
+  if(indKey==='seni' && isTokutei){
+    return `
+    <div class="extra-req-block" style="margin-top:18px">
+      <div class="extra-req-title">🧵 繊維業向け 特定技能追加要件チェック</div>
+      <div class="extra-req-note">
+        ※中分類11繊維工業に該当する事業所で、特定技能を活用する場合の追加確認です。<br>
+        ※制度運用や確認方法は更新される可能性があるため、最新情報を確認してください。
+      </div>
+      ${buildSeniReq()}
+      <div style="background:#FEF2F2;border:1px solid #FCA5A5;border-radius:8px;padding:11px 14px;font-size:12px;color:#991B1B;margin-top:12px;line-height:1.7">
+        ※追加4要件のうち1つでも未対応・未確認がある場合は、繊維業での特定技能活用は<strong>要件未充足となる可能性があるため、詳細確認または専門家確認が必要です</strong>。
+      </div>
+    </div>`;
+  }
+
+  // ── 建設 ──
+  if(indKey==='kensetsu' && isTokutei){
+    return buildGenericReqBlock('🏗️ 建設分野　追加要件チェック（特定技能）',
+      '※建設分野は分野固有の受入計画認定等が必要です。最新要件を必ず確認してください。',
+      [
+        {label:'建設業許可の有無'},
+        {label:'建設キャリアアップシステム（CCUS）登録'},
+        {label:'特定技能受入計画の認定対応'},
+        {label:'指導・安全教育体制の整備'},
+        {label:'月給制・昇給ルール等の処遇確認'},
+      ], 'kensetsu');
+  }
+
+  // ── 自動車整備 ──
+  if(indKey==='jidosha_seib' && isTokutei){
+    return buildGenericReqBlock('🔧 自動車整備分野　追加要件チェック（特定技能）',
+      '※自動車整備分野の受入には認証工場等の要件確認が必要です。',
+      [
+        {label:'認証工場または指定工場であるか'},
+        {label:'協議会加入状況'},
+        {label:'整備主任者等の支援体制'},
+        {label:'安全教育体制の整備'},
+      ], 'jidosha_seib');
+  }
+
+  // ── 宿泊 ──
+  if(indKey==='shukuhaku' && isTokutei){
+    return buildGenericReqBlock('🏨 宿泊分野　追加要件チェック（特定技能）',
+      '※宿泊分野の受入には旅館業法許可等の要件確認が必要です。',
+      [
+        {label:'旅館業法に基づく営業許可の有無'},
+        {label:'風営法対象外であること'},
+        {label:'協議会加入状況'},
+        {label:'接客・衛生教育体制の整備'},
+      ], 'shukuhaku');
+  }
+
+  // ── 介護 ──
+  if(indKey==='kaigo' && isTokutei){
+    return buildGenericReqBlock('🩺 介護分野　追加要件チェック（特定技能）',
+      '※介護分野は受入人数・配置ルール等の確認が必要です。',
+      [
+        {label:'協議会関連対応状況'},
+        {label:'受入人数や配置ルール確認'},
+        {label:'実地介護の提供体制'},
+        {label:'日本語学習・介護研修支援体制'},
+      ], 'kaigo');
+  }
+
+  // ── 航空 ──
+  if(indKey==='koku' && isTokutei){
+    return buildGenericReqBlock('✈️ 航空分野　追加要件チェック（特定技能）',
+      '※航空分野は対象事業所の許認可等の確認が必要です。',
+      [
+        {label:'対象事業所の許認可確認'},
+        {label:'協議会加入状況'},
+        {label:'安全教育・資格者指導体制の整備'},
+      ], 'koku');
+  }
+
+  // ── 農業・漁業 ──
+  if((indKey==='nogyo'||indKey==='gyogyo') && isTokutei){
+    return buildGenericReqBlock('🌾 農業・漁業分野　追加要件チェック（特定技能）',
+      '※農業・漁業分野は雇用形態（直接/派遣）や協議会対応の確認が必要です。',
+      [
+        {label:'直接雇用 / 派遣の別を確認'},
+        {label:'派遣の場合の責任者講習等'},
+        {label:'協議会対応状況'},
+        {label:'安全教育体制の整備'},
+      ], indKey+'_agri');
+  }
+
+  // ── 飲食料品製造・外食・ビルクリーニング・造船 ──
+  if(['inshokuhin','gaishoku','biru','zosen'].includes(indKey) && isTokutei){
+    const labels={inshokuhin:'飲食料品製造分野',gaishoku:'外食分野',biru:'ビルクリーニング分野',zosen:'造船・舶用工業分野'};
+    return buildGenericReqBlock(`🏭 ${labels[indKey]}　追加要件チェック（特定技能）`,
+      '※対象事業所該当性・協議会加入等の確認が必要です。',
+      [
+        {label:'分野固有の許認可・対象事業所該当性'},
+        {label:'協議会加入状況'},
+        {label:'安全衛生・教育体制の整備'},
+      ], indKey+'_extra');
+  }
+
+  return '';
+}
+
+function buildSeniReq(){
+  const uid = 'seni_req_' + Date.now();
+  return `
+  <div style="display:flex;flex-direction:column;gap:14px;margin-top:12px">
+
+    <div class="extra-req-item">
+      <div class="extra-req-item-title">① 国際的な人権基準に適合した事業運営</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0">
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r1" value="ok"> <span style="color:#15803D;font-weight:700">✅ 対応済</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r1" value="need"> <span style="color:#991B1B;font-weight:700">⚠️ 要対応</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r1" value="check" checked> <span style="color:#92400E;font-weight:700">❓ 未確認</span></label>
+      </div>
+      <div style="font-size:12px;color:var(--gray);margin-bottom:6px">第三者監査・認証（JASTI等）の対応状況メモ：</div>
+      <textarea placeholder="例：○○認証取得済 / JASTI対応準備中 / 未着手など" style="width:100%;background:var(--lgray);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:13px;resize:vertical;min-height:60px;outline:none;color:var(--dark);" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+    </div>
+
+    <div class="extra-req-item">
+      <div class="extra-req-item-title">② 勤怠管理の電子化</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0">
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r2" value="ok"> <span style="color:#15803D;font-weight:700">✅ 電子化済</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r2" value="need"> <span style="color:#991B1B;font-weight:700">⚠️ 紙管理（要対応）</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r2" value="check" checked> <span style="color:#92400E;font-weight:700">❓ 未確認</span></label>
+      </div>
+      <div style="font-size:12px;color:var(--gray);margin-bottom:6px">システム名・運用状況メモ：</div>
+      <textarea placeholder="例：○○タイムレコーダー導入済 / クラウド勤怠システム移行予定など" style="width:100%;background:var(--lgray);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:13px;resize:vertical;min-height:60px;outline:none;color:var(--dark);" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+    </div>
+
+    <div class="extra-req-item">
+      <div class="extra-req-item-title">③ パートナーシップ構築宣言</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0">
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r3" value="ok"> <span style="color:#15803D;font-weight:700">✅ 宣言済</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r3" value="plan"> <span style="color:#2563AB;font-weight:700">📋 実施予定</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r3" value="need"> <span style="color:#991B1B;font-weight:700">⚠️ 未実施</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r3" value="check" checked> <span style="color:#92400E;font-weight:700">❓ 未確認</span></label>
+      </div>
+      <div style="font-size:12px;color:var(--gray);margin-bottom:6px">宣言日・担当部署等メモ：</div>
+      <textarea placeholder="例：2024年4月宣言済（総務部担当）/ 未実施だが対応予定など" style="width:100%;background:var(--lgray);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:13px;resize:vertical;min-height:60px;outline:none;color:var(--dark);" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+    </div>
+
+    <div class="extra-req-item">
+      <div class="extra-req-item-title">④ 特定技能外国人の給与を月給制としている</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0">
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r4" value="ok"> <span style="color:#15803D;font-weight:700">✅ 月給制</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r4" value="plan"> <span style="color:#2563AB;font-weight:700">📋 切替予定</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r4" value="need"> <span style="color:#991B1B;font-weight:700">⚠️ 未対応</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="seni_r4" value="check" checked> <span style="color:#92400E;font-weight:700">❓ 未確認</span></label>
+      </div>
+      <div style="font-size:12px;color:var(--gray);margin-bottom:6px">賃金体系メモ：</div>
+      <textarea placeholder="例：全員月給制（基本給○万円）/ 現在時給制、切替検討中など" style="width:100%;background:var(--lgray);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:13px;resize:vertical;min-height:60px;outline:none;color:var(--dark);" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+    </div>
+
+  </div>`;
+}
+
+function buildGenericReqBlock(title, note, items, prefix){
+  const itemsHTML = items.map((item, i) => `
+    <div class="extra-req-item">
+      <div class="extra-req-item-title">${item.label}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin:7px 0">
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="${prefix}_r${i}"> <span style="color:#15803D;font-weight:700">✅ 対応済</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="${prefix}_r${i}"> <span style="color:#991B1B;font-weight:700">⚠️ 要対応</span></label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:12.5px;cursor:pointer"><input type="radio" name="${prefix}_r${i}" checked> <span style="color:#92400E;font-weight:700">❓ 未確認</span></label>
+      </div>
+      <textarea placeholder="確認状況・メモを入力" style="width:100%;background:var(--lgray);border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:13px;resize:vertical;min-height:50px;outline:none;color:var(--dark);" onfocus="this.style.borderColor='var(--teal)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+    </div>`).join('');
+
+  return `
+    <div class="extra-req-block" style="margin-top:18px">
+      <div class="extra-req-title">${title}</div>
+      <div class="extra-req-note">${note}<br>※これらは「受入れ可能性の追加確認項目」です。制度可否の断定には使用せず、詳細は要確認としてください。</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px">${itemsHTML}</div>
+    </div>`;
+}
+
 function renderSystemCard(rid){
   S.system=rid;
   // 日付の最小値を制度に合わせて更新
@@ -629,33 +946,43 @@ function renderSystemCard(rid){
   const careerHTML=r.career?`<div class="career-path" style="margin-top:12px">${careerParts}</div>`:'';
   const tagHTML=r.tags.map(t=>`<span class="rd-tag ${t.c}">${t.t}</span>`).join('');
   const itemHTML=r.items.map(it=>`<div class="rdi"><div class="rdi-label">${it.l}</div><div class="rdi-val">${it.v}</div></div>`).join('');
-  const COLORS={r_domestic:'#2563AB',r_overseas:'#0D9488',r_ikusei:'#0D9488',r_gijin:'#5B21B6',r_ginou:'#4C1D95'};
+  const COLORS={r_domestic:'#2563AB',r_overseas:'#0D9488',r_ikusei:'#0D9488',r_ginou:'#4C1D95'};
 
   // 業種に応じて表示する制度ボタンを制御
   const indKey2=document.getElementById('f-industry').value;
   const indData2=INDUSTRY_DATA[indKey2];
-  const allUnavail = indData2 && !indData2.systems.tokutei_kaigai && !indData2.systems.tokutei_kokunai && !indData2.systems.ikusei && !indData2.systems.gijin;
+  const allUnavail = indData2 && !indData2.systems.tokutei_kaigai && !indData2.systems.tokutei_kokunai && !indData2.systems.ikusei && indData2.systems.ikusei!=='unknown' && indData2.systems.ginou===false;
 
   const switchHTML=Object.entries(RESULTS).map(([k,v])=>{
     const active=k===rid;
     // 業種で完全に使えない制度はグレーアウト（ただし表示は残す）
     const sys=indData2?indData2.systems:{};
-    const sysMap={r_domestic:'tokutei_kokunai',r_overseas:'tokutei_kaigai',r_ikusei:'ikusei',r_gijin:'gijin',r_ginou:null};
+    const sysMap={r_domestic:'tokutei_kokunai',r_overseas:'tokutei_kaigai',r_ikusei:'ikusei',r_ginou:'ginou'};
     const sysKey=sysMap[k];
-    const usable = allUnavail ? (k==='r_ginou') : (!sysKey || sys[sysKey]===true || sys[sysKey]==='partial' || !indData2);
+    const sysVal = sysKey ? sys[sysKey] : undefined;
+    // unknown は「要確認」として表示（利用可能扱いだがラベル付き）
+    const usable = allUnavail ? (k==='r_ginou') : (sysVal===true || sysVal==='partial' || sysVal==='unknown' || sysVal===undefined || !indData2);
+    const isUnknown = !allUnavail && sysVal==='unknown';
     return `<button onclick="renderSystemCard('${k}')" 
-      title="${usable?'':'この業種では利用が難しい制度です'}"
+      title="${usable?(isUnknown?'この制度の対象可否は要確認です':''):'この業種では利用が難しい制度です'}"
       style="background:${active?COLORS[k]:(usable?'var(--lgray)':'#F5F5F5')};color:${active?'white':(usable?'var(--dark)':'#aaa')};border:1.5px solid ${active?COLORS[k]:(usable?'var(--border)':'#ddd')};border-radius:8px;padding:8px 14px;font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:.15s;opacity:${usable?1:0.6}">
-      ${v.icon} ${v.name}${usable?'':' ⚠️'}</button>`;
+      ${v.icon} ${v.name}${isUnknown?' ❓':(!usable?' ⚠️':'')}</button>`;
   }).join('');
 
   // 国内特定技能の場合は追加提案文を表示
   const extraHTML = rid==='r_domestic' ? DOMESTIC_TIPS : '';
 
+  // 分野別追加要件チェックブロック
+  const indKey3=document.getElementById('f-industry').value;
+  const extraReqHTML = buildExtraReqBlock(indKey3, rid);
+
   document.getElementById('system-display').innerHTML=`
     <div class="card">
       <div class="sec-step">STEP 4 / 5　推奨制度</div>
       <div class="sec-title" style="margin-bottom:16px">採用目的から<em>制度を自動選定</em>しました</div>
+      <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:9px;padding:11px 15px;font-size:12px;color:#15803D;margin-bottom:14px;line-height:1.7">
+        ※本ツールは制度の方向性判断を目的としたものです。実際の在留資格取得可否・受入可否は、業務内容、事業所要件、最新制度、個別審査により異なります。最終判断は行政書士・社労士等の専門家確認を推奨します。
+      </div>
       <div style="margin-bottom:14px">
         <div style="font-size:12px;color:var(--gray);margin-bottom:10px">制度を切り替えて比較できます：</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px">${switchHTML}</div>
@@ -674,30 +1001,26 @@ function renderSystemCard(rid){
           ${extraHTML}
         </div>
       </div>
+      ${extraReqHTML}
+      ${renderEstimateWithProposal(calcEstimate(), rid)}
     </div>`;
 }
 
-// 日付の最小値を制度に合わせて設定
+// 就労開始日の目安表示（min強制制限なし）
 function updateDateMin(rid){
-  const dateEl=document.getElementById('f-timing-date');
   const noteEl=document.getElementById('date-min-note');
-  if(!dateEl) return;
-  const today=new Date();
-  let months=1, label='';
-  if(rid==='r_overseas'){months=4;label='特定技能（海外採用）は採用決定から最短4ヶ月後が就労開始目安です';}
-  else if(rid==='r_ikusei'){months=6;label='育成就労は入国準備・審査等で最短6ヶ月程度かかります';}
-  else if(rid==='r_domestic'){months=2;label='国内特定技能は在留資格変更で最短1〜3ヶ月。余裕を見て2ヶ月後から選択できます';}
-  else{months=1;label='';}
-  const minDate=new Date(today);
-  minDate.setMonth(minDate.getMonth()+months);
-  const minStr=minDate.toISOString().split('T')[0];
-  dateEl.min=minStr;
-  // 現在の値が最小値より前なら消す
-  if(dateEl.value && dateEl.value < minStr){
-    dateEl.value='';
-  }
-  if(label){noteEl.textContent='📅 '+label;noteEl.style.display='block';}
-  else{noteEl.style.display='none';}
+  if(!noteEl) return;
+  const baseNote='<br><span style="font-size:10px;color:#92400E">※審査、試験、国籍、地域、事業所要件により変動するため要確認</span>';
+  let label='';
+  if(rid==='r_overseas'){label='📅 一般的な目安：海外特定技能は採用決定から就労開始まで<strong>4〜6か月程度</strong>';}
+  else if(rid==='r_ikusei'){label='📅 育成就労（2027年4月施行予定）は施行前のため就労開始時期は要確認';}
+  else if(rid==='r_domestic'){label='📅 一般的な目安：国内特定技能は在留資格変更で<strong>1〜3か月程度</strong>';}
+  else if(rid==='r_ginou'){label='📅 技能実習は制度廃止予定（経過措置あり）。受入可否・時期は最新制度を要確認';}
+  else{label='';}
+  if(label){
+    noteEl.innerHTML=label+baseNote;
+    noteEl.style.display='block';noteEl.style.color='#92400E';
+  } else {noteEl.style.display='none';}
 }
 
 // ════ 初期化 ════
@@ -775,6 +1098,19 @@ function reset(){
   document.querySelectorAll('.weight-btn').forEach(b=>b.classList.remove('active'));
   SKILLS.forEach(sk=>S.skills[sk]=null);
   W_KEYS.forEach(k=>S.weights[k]=null);
+  document.querySelectorAll('#country-grp .check-item').forEach(el=>{
+    el.classList.remove('selected');
+    const box=el.querySelector('.check-box');
+    box.textContent='';box.style.background='';box.style.borderColor='';box.style.color='';
+  });
+  // 「未定」をデフォルト選択に戻す
+  const defCountry=document.querySelector('#country-grp .check-item:last-child');
+  if(defCountry){
+    defCountry.classList.add('selected');
+    const b=defCountry.querySelector('.check-box');
+    b.textContent='✓';b.style.background='var(--teal)';b.style.borderColor='var(--teal)';b.style.color='white';
+  }
+  S.country='undecided';
   document.getElementById('next-1').classList.remove('on');
   document.getElementById('system-display').innerHTML='';
   document.getElementById('summary-content').innerHTML='';
@@ -794,6 +1130,17 @@ function ck(el,grp,val){
   if(el.classList.contains('checked')){box.textContent='✓';S[grp].add(val);}
   else{box.textContent='';S[grp].delete(val);}
 }
+function pickCountry(el,val){
+  document.querySelectorAll('#country-grp .check-item').forEach(r=>{
+    r.classList.remove('selected');
+    const box=r.querySelector('.check-box');
+    box.textContent='';box.style.background='';box.style.borderColor='';box.style.color='';
+  });
+  el.classList.add('selected');
+  const box=el.querySelector('.check-box');
+  box.textContent='✓';box.style.background='var(--teal)';box.style.borderColor='var(--teal)';box.style.color='white';
+  S.country=val;
+}
 function pickRadio(el,grp,val){
   document.querySelectorAll(`#jp-grp .radio-item`).forEach(r=>r.classList.remove('selected'));
   el.classList.add('selected');S[grp]=val;
@@ -809,115 +1156,115 @@ const INDUSTRY_DATA = {
   kogyoseihin: {
     label: '工業製品製造業',
     processes: ['機械金属加工（旋盤・フライス・研削等）','電気・電子機器組立て','金属表面処理（めっき・塗装等）','紙器・段ボール箱製造','コンクリート製品製造','陶磁器製品製造','印刷・製本','紡織製品製造','縫製','溶接・構造物組立','プレス・板金','プラスチック成形','その他製造工程'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true},
     note: null
   },
   inshokuhin: {
     label: '飲食料品製造業',
     processes: ['食品製造・加工（缶詰・冷凍食品等）','水産加工（水産練り製品・節類等）','食鳥処理加工','惣菜・調理加工品製造','発酵食品製造（味噌・醤油・漬物等）','製パン・製菓','スーパーバックヤード調理（食品製造を行う場合）','品質検査・安全衛生管理'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true, gijin:false},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true},
     note: null
   },
   seni: {
     label: '繊維・衣服関連',
     processes: ['前紡・精紡・合撚糸工程','織物製造（製織・仕上工程）','染色（糸・布浸染）','靴下製造','ニット製品製造','婦人子供服製造','紳士服製造','寝具製品製造','その他縫製作業'],
-    systems: {tokutei_kaigai:false, tokutei_kokunai:false, ikusei:false, gijin:true},
-    note: {type:'warn', text:'⚠️ 繊維・衣服関連は特定技能・育成就労の対象外です。<strong>技能実習（育成就労施行前の2027年3月まで）</strong>または<strong>技術・人文知識・国際業務（管理・企画職）</strong>のみ対応可能です。現場作業員の新規受入れは2027年3月の技能実習終了後は難しくなります。'}
+    systems: {tokutei_kaigai:'partial', tokutei_kokunai:'partial', ikusei:'unknown', ginou:true},
+    note: {type:'warn', text:'⚠️ 繊維・衣服関連（中分類11）の主な選択肢：<br>・<strong>技能実習</strong>→ 現場作業で活用実績あり（制度廃止予定・経過措置あり。最新情報を要確認）<br>・<strong>特定技能</strong>→ 追加4要件（人権基準・勤怠電子化・パートナーシップ宣言・月給制）への対応が求められる場合があります（制度・運用により異なるため要確認）<br>・<strong>技術・人文知識・国際業務</strong>→ 業種ではなく職務内容による個別判断となります<br>・<strong>育成就労（2027年4月施行予定）</strong>→ 制度詳細が確定していないため、繊維分野での対象可否は要確認<br>※最新の制度・要件は必ず確認してください。'}
   },
   kagaku: {
     label: '化学・薬品・ゴム・プラスチック・紙・印刷',
     processes: ['化学製品製造（プラスチック原料・合成樹脂等）','医薬品・化粧品製造','ゴム製品製造（タイヤ・ホース等）','プラスチック成形（射出・押出・ブロー等）','紙・パルプ製造','段ボール・紙器製造','印刷（オフセット・グラビア等）','塗料・インク製造'],
-    systems: {tokutei_kaigai:'partial', tokutei_kokunai:'partial', ikusei:'partial', gijin:true},
+    systems: {tokutei_kaigai:'partial', tokutei_kokunai:'partial', ikusei:'partial'},
     note: {type:'warn', text:'⚠️ 化学・薬品・ゴム等は職種により制限があります。<br>・<strong>プラスチック成形・印刷・段ボール製造</strong>→ 工業製品製造業の特定技能で対応可能<br>・<strong>化学品製造・医薬品・塗料製造</strong>→ 現在、特定技能の対象外（技能実習のみ）<br>・<strong>管理・品質・研究職</strong>→ 技術・人文知識・国際業務で対応可能<br>詳細は職種ごとに確認が必要です。'}
   },
   mokuzai: {
     label: '木材産業',
     processes: ['製材（原木の製材加工）','合板製造','木材乾燥・加工','集成材製造','木材チップ製造','建築用木材加工'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true},
     note: null
   },
   kensetsu: {
     label: '建設業',
     processes: ['とび・土木・コンクリート工事','建築大工（木造建築）','左官','配管（建築・空調・衛生）','建築板金','保温保冷工事','吹付ウレタン断熱工事','海洋土木工事','電気工事','鉄筋施工','塗装（建築・橋梁）','溶接（建設関連）','内装仕上げ・表装','建設機械施工'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true},
     note: null
   },
   zosen: {
     label: '造船・舶用工業',
     processes: ['船体溶接','船体加工（鋼材切断・曲げ等）','船体組立','塗装（船舶）','船舶機械製造・修繕','電気機器組立（船舶）','仕上げ・管艤装'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true},
     note: null
   },
   tetsudo: {
     label: '鉄道',
     processes: ['運転士・車掌・駅係員（運輸係員）','軌道整備','電気設備整備','車両整備','車両製造'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false},
     note: {type:'info', text:'ℹ️ 鉄道分野は2024年新設。育成就労（旧技能実習）の対象外。運輸係員（運転士等）はJLPT N3以上が必要です。'}
   },
   jidosha_unso: {
     label: '自動車運送業',
     processes: ['バス運転手（路線・観光・高速等）','タクシー運転手','トラック運転手（一般貨物）','トラック運転手（冷蔵・冷凍）'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false},
     note: {type:'warn', text:'⚠️ 自動車運送業は2024年新設。<strong>育成就労・技人国の対象外</strong>です。バス・タクシーは第二種運転免許＋JLPT N3が必要。日本の運転免許取得が必須のため、海外からの採用には時間がかかります。'}
   },
   nogyo: {
     label: '農業',
     processes: ['施設園芸（野菜・花き等）','畑作・野菜（露地）','果樹栽培','養豚','養鶏','酪農','その他農業作業'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true},
     note: {type:'info', text:'ℹ️ 農業分野は季節性があるため派遣形態での就労も認められています。'}
   },
   ringyo: {
     label: '林業',
     processes: ['育林（植付・下刈・除伐・枝打等）','素材生産（伐採・集材等）','林業種苗育成'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true, gijin:false},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true},
     note: {type:'info', text:'ℹ️ 林業分野は2024年新設。現状は技能実習からの移行が主なルート。受入見込数は5年で1,000人と少なめです。'}
   },
   gyogyo: {
     label: '漁業・養殖業',
     processes: ['漁業（漁具操作・採捕・仕分け等）','養殖業（いけす管理・収穫等）'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true, gijin:false},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true},
     note: null
   },
   kaigo: {
     label: '介護',
     processes: ['身体介護（入浴・食事・排せつ介助）','生活援助・レクリエーション補助','機能訓練補助','介護記録作成'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true},
     note: {type:'info', text:'ℹ️ 介護は特定技能2号が存在しない唯一の分野（介護福祉士資格取得でキャリアアップ）。施設介護のみ対象で訪問介護は不可。'}
   },
   biru: {
     label: 'ビルクリーニング',
     processes: ['建築物内部清掃（床・窓・トイレ等）','定期清掃（ワックス・高圧洗浄等）'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false},
     note: {type:'info', text:'ℹ️ ビルクリーニング分野は育成就労（旧技能実習）の対象外です。'}
   },
   jidosha_seib: {
     label: '自動車整備業',
     processes: ['日常点検整備','定期点検整備','分解整備（エンジン・ブレーキ等）','車体整備（板金・塗装）','電装品整備'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true},
     note: null
   },
   koku: {
     label: '航空業',
     processes: ['空港グランドハンドリング（地上走行支援・手荷物等）','航空機整備（機体・装備品等）'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false},
     note: {type:'warn', text:'⚠️ 航空分野は育成就労（旧技能実習）の対象外です。また自動車運送業と同様、育成就労の対象分野から除外されています。'}
   },
   shukuhaku: {
     label: '宿泊業',
     processes: ['フロント業務','客室清掃・ベッドメイキング','レストランサービス','企画・広報','接客全般'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false},
     note: {type:'info', text:'ℹ️ 宿泊分野は育成就労の対象外です。'}
   },
   gaishoku: {
     label: '外食業',
     processes: ['飲食物の調理','接客（ホール・カフェ等）','店舗管理（衛生・在庫等）','デリバリー管理'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:false},
     note: {type:'info', text:'ℹ️ 外食分野は育成就労の対象外です。日本語能力はJLPT N3相当が求められます。'}
   },
   other: {
     label: 'その他',
     processes: ['その他'],
-    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true, gijin:true},
+    systems: {tokutei_kaigai:true, tokutei_kokunai:true, ikusei:true},
     note: null
   }
 };
@@ -925,13 +1272,13 @@ const INDUSTRY_DATA = {
 // 制度バッジカラー
 const SYS_COLORS = {
   tokutei_kaigai:'#0D9488', tokutei_kokunai:'#2563AB',
-  ikusei:'#0D9488', gijin:'#5B21B6'
+  ikusei:'#0D9488', ginou:'#4C1D95'
 };
 const SYS_LABELS = {
   tokutei_kaigai:'特定技能（海外）', tokutei_kokunai:'特定技能（国内）',
-  ikusei:'育成就労', gijin:'技人国'
+  ikusei:'育成就労', ginou:'技能実習'
 };
-// 技能実習は別枠（INDUSTRY_DATAのシステムキーと直接対応しない）
+// ginouは全業種で基本利用可だが、INDUSTRY_DATAのginou:falseで不可にできる
 
 function onIndustryChange(){
   const ind = document.getElementById('f-industry').value;
@@ -956,24 +1303,29 @@ function onIndustryChange(){
     .map(([k,v])=>`<span style="background:${SYS_COLORS[k]};color:white;border-radius:5px;padding:3px 9px;font-size:12px;font-weight:700;margin:2px;display:inline-block">${v}</span>`)
     .join('');
   const unavailable = Object.entries(SYS_LABELS)
-    .filter(([k])=>!sys[k])
+    .filter(([k])=>sys[k]===false)
     .map(([k,v])=>`<span style="background:var(--lgray);color:var(--gray);border-radius:5px;padding:3px 9px;font-size:12px;font-weight:700;margin:2px;display:inline-block;text-decoration:line-through">${v}</span>`)
     .join('');
   const partial = Object.entries(SYS_LABELS)
     .filter(([k])=>sys[k]==='partial')
     .map(([k,v])=>`<span style="background:#D97706;color:white;border-radius:5px;padding:3px 9px;font-size:12px;font-weight:700;margin:2px;display:inline-block">${v}（一部）</span>`)
     .join('');
+  const unknown = Object.entries(SYS_LABELS)
+    .filter(([k])=>sys[k]==='unknown')
+    .map(([k,v])=>`<span style="background:#94A3B8;color:white;border-radius:5px;padding:3px 9px;font-size:12px;font-weight:700;margin:2px;display:inline-block">${v}（要確認）</span>`)
+    .join('');
 
   let html = `<div style="background:white;border:1.5px solid var(--border);border-radius:11px;padding:14px 16px;">
-    <div style="font-size:11.5px;font-weight:700;color:var(--gray);margin-bottom:10px">📋 ${data.label}　— 利用可能な制度</div>
-    <div style="margin-bottom:8px">${available}${partial}</div>`;
-  if(unavailable) html+=`<div style="margin-bottom:8px;font-size:11px;color:var(--gray)">利用不可：${unavailable}</div>`;
+    <div style="font-size:11.5px;font-weight:700;color:var(--gray);margin-bottom:10px">📋 ${data.label}　— 利用可能な制度（目安）</div>
+    <div style="margin-bottom:8px">${available}${partial}${unknown}</div>`;
+  if(unavailable) html+=`<div style="margin-bottom:8px;font-size:11px;color:var(--gray)">利用不可（要確認）：${unavailable}</div>`;
   if(data.note){
     const bg=data.note.type==='warn'?'#FEF2F2':'#EFF6FF';
     const border=data.note.type==='warn'?'#FCA5A5':'#93C5FD';
     const color=data.note.type==='warn'?'#991B1B':'#1D4ED8';
     html+=`<div style="background:${bg};border:1px solid ${border};border-radius:7px;padding:11px 13px;font-size:12.5px;color:${color};line-height:1.7;margin-top:4px">${data.note.text}</div>`;
   }
+  html+=`<div style="font-size:10.5px;color:var(--gray);margin-top:8px;padding-top:6px;border-top:1px solid var(--border)">❓ は制度の対象可否が未確定または要確認の分野です　／　取り消し線は現時点で利用が難しい制度です</div>`;
   html+='</div>';
   restr.innerHTML=html;restr.style.display='block';
 
@@ -985,7 +1337,7 @@ const RESULTS={
   r_domestic:{name:'特定技能（国内採用）',icon:'⚡',bg:'linear-gradient(135deg,#1E3A8A,#2563AB)',
     tags:[{t:'迅速採用◎',c:'tag-green'},{t:'在留資格変更',c:'tag-blue'},{t:'北陸：採用難',c:'tag-red'}],
     items:[{l:'採用〜就労目安',v:'1〜3ヶ月（最速）'},{l:'対象者',v:'元技実修了者・在留特定技能・転職者・留学生等'},{l:'在留期間',v:'最長5年（特定技能1号）'},{l:'手続き',v:'在留資格変更申請のみ / 比較的シンプル'}],
-    desc:'国内在留の外国人を特定技能に変更するルートです。入国手続きが不要なため採用〜就労が最短1〜3ヶ月と最速。技実2号修了者は試験免除。',
+    desc:'国内在留の外国人を特定技能に変更するルートです。入国手続きが不要なため採用〜就労が一般的に1〜3か月程度（要確認）。技実2号修了者は試験免除。',
     career:null,
     note:{cls:'note-red',text:'📍 北陸注意：国内特定技能は都市志向が強く、地方への採用は難しいケースが多いです。海外採用ルートの併用を推奨します。'}},
   r_overseas:{name:'特定技能（海外採用）',icon:'🌏',bg:'linear-gradient(135deg,#134E4A,#0D9488)',
@@ -994,25 +1346,25 @@ const RESULTS={
     desc:'ベトナム等から直接採用するルートです。トクシンベトナムが現地発掘・面接代行を行い、入国後の生活支援・登録支援まで一本化します。北陸製造業に最も有力な選択肢です。',
     career:[{n:'特定技能1号',p:'最長5年',bg:'#0D9488'},{n:'特定技能2号',p:'無制限・家族帯同',bg:'#1D4ED8'}],
     note:{cls:'note-green',text:'📍 北陸：トクシンベトナムの現地ネットワークを活用し、製造業に適した人材を安定確保できます。窓口はトクシントラスト一本。'}},
-  r_ikusei:{name:'育成就労（2027年4月〜）',icon:'🎓',bg:'linear-gradient(135deg,#134E4A,#0D9488)',
-    tags:[{t:'2027年4月施行',c:'tag-gold'},{t:'原則3年育成',c:'tag-blue'},{t:'北陸：有力◎',c:'tag-green'}],
-    items:[{l:'在留期間',v:'原則3年（育成期間）'},{l:'日本語要件',v:'入国前A1以上 / 就労1年後A2以上'},{l:'目標',v:'3年で特定技能1号水準まで育成'},{l:'転籍',v:'条件付きで転籍可（1〜2年就労後）'}],
-    desc:'2027年4月に技能実習に代わる新制度。3年間で特定技能1号水準まで育成し、その後最長8年以上の長期定着が実現可能です。',
-    career:[{n:'育成就労',p:'原則3年',bg:'#0D9488'},{n:'特定技能1号',p:'最長5年',bg:'#2563AB'},{n:'特定技能2号',p:'無制限',bg:'#1E3A8A'}],
-    note:{cls:'note-gold',text:'⚠ 転籍リスク：一定条件のもと本人意向による転籍が可能になります。長期定着のための環境整備が重要です。'}},
+  r_ikusei:{name:'育成就労（2027年4月施行予定）',icon:'🎓',bg:'linear-gradient(135deg,#134E4A,#0D9488)',
+    tags:[{t:'2027年4月施行予定',c:'tag-gold'},{t:'原則3年育成',c:'tag-blue'},{t:'北陸：有力◎',c:'tag-green'}],
+    items:[{l:'在留期間',v:'原則3年（育成期間）'},{l:'日本語要件',v:'入国前A1以上 / 就労1年後A2以上'},{l:'目標',v:'3年で特定技能1号水準まで育成（要件充足の場合）'},{l:'転籍',v:'条件付きで転籍可（1〜2年就労後）'}],
+    desc:'技能実習に代わる制度として導入予定（2027年4月施行予定）。3年間で特定技能1号水準への育成を目指す制度です。特定技能への移行は要件を満たした場合に限られるため、詳細は要確認。施行前のため最新情報の確認が必要です。',
+    career:[{n:'育成就労',p:'原則3年',bg:'#0D9488'},{n:'特定技能1号',p:'最長5年（要件充足の場合）',bg:'#2563AB'},{n:'特定技能2号',p:'無制限',bg:'#1E3A8A'}],
+    note:{cls:'note-gold',text:'⚠ 転籍リスク：一定条件のもと本人意向による転籍が可能になる予定です。長期定着のための環境整備が重要です。制度詳細は施行前のため要確認。'}},
   r_gijin:{name:'技術・人文知識・国際業務',icon:'💼',bg:'linear-gradient(135deg,#2E1065,#5B21B6)',
     tags:[{t:'更新制（上限なし）',c:'tag-green'},{t:'人材派遣',c:'tag-purp'},{t:'人材紹介',c:'tag-blue'},{t:'大卒or実務10年',c:'tag-gold'}],
-    items:[{l:'対象業務',v:'設計・事務・通訳・IT・営業（現場単純作業不可）'},{l:'学歴・経験',v:'大卒以上、または同種業務の実務10年以上'},{l:'在留期間',v:'更新制（上限なし）'},{l:'採用方法',v:'人材派遣 または 人材紹介どちらも活用可'}],
-    desc:'専門的・技術的分野向けの在留資格です。設計・施工管理・通訳・事務・IT系の専門職に活用でき、在留期間の上限がないため長期就労・永住も視野に入ります。',
+    items:[{l:'対象業務',v:'設計・事務・通訳・IT・営業等（職務内容で個別判断）'},{l:'学歴・経験',v:'大卒以上、または同種業務の実務10年以上'},{l:'在留期間',v:'更新制（上限なし）'},{l:'採用方法',v:'人材派遣 または 人材紹介どちらも活用可'}],
+    desc:'専門的・技術的分野向けの在留資格です。<strong>業種ではなく職務内容で判定</strong>されます。設計・品質保証・通訳・海外営業・IT・研究開発等は対象となる可能性がありますが、現場の単純作業は原則対象外です。学歴・職歴・専攻と業務内容の関連性により個別判断され、最終判断は入管審査によります。在留期間の上限がないため長期就労・永住も視野に入ります。',
     career:null,
-    note:{cls:'note-green',text:'📍 北陸：製造業の設計・通訳・事務の専門職ポジションに有効。派遣・紹介どちらにも対応できます。'}}
+    note:{cls:'note-green',text:'📍 ※技術・人文知識・国際業務は業種ではなく職務内容で判定されます。専門的・技術的業務であることが前提です。最終判断は入管審査による個別判断となります。'}}
 ,
-  r_ginou:{name:'技能実習（〜2027年3月）',icon:'🔧',bg:'linear-gradient(135deg,#6D28D9,#4C1D95)',
-    tags:[{t:'繊維・化学等対応',c:'tag-purp'},{t:'〜2027年3月まで新規受入',c:'tag-gold'},{t:'監理団体必須',c:'tag-blue'}],
-    items:[{l:'在留期間',v:'最長5年（1号1年＋2号2年＋3号2年）'},{l:'対象',v:'繊維・衣服・化学・ゴム・紙等（特定技能対象外分野も可）'},{l:'受入方法',v:'監理団体（協同組合等）を通じた監理型が主流'},{l:'移行',v:'2号修了後→特定技能1号（対応職種のみ試験免除）'}],
-    desc:'特定技能・育成就労の対象外となる繊維・衣服・化学・ゴム等の分野でも受入れ可能な制度です。ただし2027年3月で新規受入終了となるため、現行の実習生は継続できますが新規計画は慎重な検討が必要です。技能実習2号修了後に特定技能対応職種であれば試験免除で特定技能1号へ移行できます。トクシンネット協同組合が監理団体として対応します。',
-    career:[{n:'技能実習1号',p:'1年',bg:'#6D28D9'},{n:'技能実習2号',p:'最大2年',bg:'#5B21B6'},{n:'技能実習3号',p:'最大2年',bg:'#4C1D95'},{n:'特定技能1号へ',p:'試験免除（対応職種）',bg:'#0D9488'}],
-    note:{cls:'note-gold',text:'⚠️ 2027年3月で新規受入終了。育成就労（2027年4月〜）への移行を見据えた計画が重要です。繊維・化学等の特定技能対象外分野では移行先がない場合もあるため、早めにトクシンネット協同組合へご相談ください。'}}
+  r_ginou:{name:'技能実習（廃止予定・経過措置あり）',icon:'🔧',bg:'linear-gradient(135deg,#6D28D9,#4C1D95)',
+    tags:[{t:'繊維・化学等対応可能性あり',c:'tag-purp'},{t:'制度廃止予定・要確認',c:'tag-gold'},{t:'監理団体必須',c:'tag-blue'}],
+    items:[{l:'在留期間',v:'最長5年（1号1年＋2号2年＋3号2年）※経過措置含め要確認'},{l:'対象',v:'繊維・衣服・化学・ゴム・紙等（職種により異なる）'},{l:'受入方法',v:'監理団体（協同組合等）を通じた監理型が主流'},{l:'移行',v:'2号修了後→特定技能1号（対応職種のみ・要件確認が必要）'}],
+    desc:'技能実習制度は廃止予定（経過措置あり）。受入可否・期間は最新制度を要確認。特定技能・育成就労の対象外となる繊維・衣服・化学・ゴム等の分野での活用実績があります。ただし新規計画は制度移行を見据えた慎重な検討が必要です。技能実習2号修了後に特定技能対応職種であれば試験免除で特定技能1号へ移行できる可能性があります（要件確認が必要）。',
+    career:[{n:'技能実習1号',p:'1年',bg:'#6D28D9'},{n:'技能実習2号',p:'最大2年',bg:'#5B21B6'},{n:'技能実習3号',p:'最大2年',bg:'#4C1D95'},{n:'特定技能1号へ',p:'試験免除（対応職種・要確認）',bg:'#0D9488'}],
+    note:{cls:'note-gold',text:'⚠️ 技能実習制度は廃止予定（経過措置あり）。育成就労（2027年4月施行予定）への移行を見据えた計画が重要です。繊維・化学等の特定技能対象外分野では移行先が限られる可能性もあるため、早めにトクシンネット協同組合へご相談ください。経過措置・最新情報を必ず確認してください。'}}
 };
 
 // ════ ツリー ════
@@ -1086,30 +1438,349 @@ function showTreeResult(rid,label){
   setTimeout(()=>{d.scrollIntoView({behavior:'smooth',block:'nearest'});},80);
 }
 
+// ════ 追加要件チェック 判定ロジック ════
+function evaluateRequirements(prefix){
+  const radios = document.querySelectorAll(`[name^="${prefix}_r"]`);
+  let ok=0, need=0, check=0;
+  radios.forEach(r=>{
+    if(r.checked){
+      if(r.value==='ok')    ok++;
+      if(r.value==='need')  need++;
+      if(r.value==='check'||r.value==='plan') check++;
+    }
+  });
+  let status, color, text;
+  if(need>0){
+    status='NG'; color='#DC2626';
+    text='追加対応または専門家確認が必要です';
+  } else if(check>0){
+    status='CAUTION'; color='#D97706';
+    text='追加要件の確認が未了です';
+  } else if(ok>0){
+    status='OK'; color='#16A34A';
+    text='追加要件は概ね充足している可能性があります';
+  } else {
+    status='NONE'; color='#64748B';
+    text='未入力の項目があります';
+  }
+  return {ok, need, check, status, color, text};
+}
+
+function renderRequirementSummary(prefix, label){
+  const res = evaluateRequirements(prefix);
+  return `
+    <div style="margin-top:14px;border-radius:10px;padding:14px 16px;
+      background:${res.color}18;border:1.5px solid ${res.color}">
+      <div style="font-size:13px;font-weight:800;color:${res.color};margin-bottom:6px">
+        ■ 判定結果（${label}）
+      </div>
+      <div style="font-size:12.5px;line-height:1.8;color:var(--dark)">
+        ・対応済：${res.ok}　・未確認：${res.check}　・要対応：${res.need}
+      </div>
+      <div style="margin-top:6px;font-size:12.5px;color:${res.color};font-weight:700">
+        → ${res.text}
+      </div>
+    </div>`;
+}
+
+function extractIssues(prefix){
+  const radios = document.querySelectorAll(`[name^="${prefix}_r"]`);
+  let issues=[];
+  radios.forEach(r=>{
+    if(r.checked && (r.value==='need'||r.value==='check')){
+      const item = r.closest('.extra-req-item');
+      if(item){
+        const title = item.querySelector('.extra-req-item-title');
+        if(title) issues.push(title.innerText||title.textContent);
+      }
+    }
+  });
+  return issues;
+}
+
+function getActiveReqPrefix(){
+  const indKey = document.getElementById('f-industry')?.value;
+  const rid = S.system;
+  const isTokutei = rid==='r_domestic'||rid==='r_overseas';
+  if(!indKey||!isTokutei) return null;
+  if(indKey==='seni')         return 'seni';
+  if(indKey==='kensetsu')     return 'kensetsu';
+  if(indKey==='jidosha_seib') return 'jidosha_seib';
+  if(indKey==='shukuhaku')    return 'shukuhaku';
+  if(indKey==='kaigo')        return 'kaigo';
+  if(indKey==='koku')         return 'koku';
+  if(indKey==='nogyo'||indKey==='gyogyo') return `${indKey}_agri`;
+  if(['inshokuhin','gaishoku','biru','zosen'].includes(indKey)) return `${indKey}_extra`;
+  return null;
+}
+
+function getActiveReqLabel(){
+  const indKey = document.getElementById('f-industry')?.value;
+  const labels={
+    seni:'繊維 特定技能', kensetsu:'建設 特定技能',
+    jidosha_seib:'自動車整備 特定技能', shukuhaku:'宿泊 特定技能',
+    kaigo:'介護 特定技能', koku:'航空 特定技能',
+    nogyo:'農業 特定技能', gyogyo:'漁業 特定技能',
+    inshokuhin:'飲食料品製造 特定技能', gaishoku:'外食 特定技能',
+    biru:'ビルクリーニング 特定技能', zosen:'造船・舶用工業 特定技能'
+  };
+  return labels[indKey]||'追加要件チェック';
+}
+
+function buildSummaryExtra(){
+  const prefix = getActiveReqPrefix();
+  if(!prefix) return '';
+  const label  = getActiveReqLabel();
+  const issues = extractIssues(prefix);
+  return `
+    <div class="sum-sec">
+      <div class="sum-sec-title">追加要件チェック結果</div>
+      ${renderRequirementSummary(prefix, label)}
+      <div style="margin-top:12px;font-size:13px;color:var(--dark)">
+        <strong>■ 未対応・要確認項目</strong>
+        <ul style="margin-top:6px;padding-left:18px;line-height:1.8">
+          ${issues.length ? issues.map(i=>`<li>${i}</li>`).join('') : '<li>特になし</li>'}
+        </ul>
+      </div>
+    </div>`;
+}
+
+// ════ 見積計算 ════
+function calcEstimate(){
+  const system = S.system;
+  const headcount = S.hireNum || 1;
+  const country = S.country || 'undecided';
+
+  let result = { initial_min:0, initial_max:0, monthly:0, breakdown:[], note:'' };
+
+  if(system==='r_overseas'||system==='r_domestic'){
+    const intro = 380000;
+    const monthly = 30000;
+    let misc_min = 150000;
+    let misc_max = 400000;
+
+    if(country==='indonesia'){ misc_min*=0.9; misc_max*=0.9; }
+    if(country==='myanmar'){   misc_min*=0.85; misc_max*=0.85; }
+
+    result.initial_min = Math.round((intro + 20000 + misc_min) * headcount);
+    result.initial_max = Math.round((intro + 50000 + misc_max) * headcount);
+    result.monthly     = monthly * headcount;
+    result.breakdown   = ['紹介料：38万円/人','申請費用：2〜5万円/人','実費：渡航・住居等'];
+    result.note = country==='undecided'
+      ? '※国未定のためベトナム基準で算出しています'
+      : country==='indonesia'
+        ? '※インドネシアは実費が若干抑えられる傾向があります'
+        : country==='myanmar'
+          ? '※ミャンマーは実費がやや抑えられる傾向があります'
+          : '';
+  }
+
+  if(system==='r_ikusei'){
+    const intro = 380000;
+    const monthly = 30000;
+    let misc_min = 150000;
+    let misc_max = 450000;
+
+    if(country==='indonesia'){ misc_min*=0.9; misc_max*=0.9; }
+    if(country==='myanmar'){   misc_min*=0.85; misc_max*=0.85; }
+
+    result.initial_min = Math.round((intro + 20000 + misc_min) * headcount);
+    result.initial_max = Math.round((intro + 60000 + misc_max) * headcount);
+    result.monthly     = monthly * headcount;
+    result.breakdown   = ['紹介料：38万円/人','申請費用：2〜6万円/人','実費：渡航・住居・入国準備等'];
+    result.note = '※育成就労（2027年4月施行予定）は制度確定前のため実費が変動する可能性があります';
+  }
+
+  if(system==='r_gijin'){
+    const jp = S.jp;
+    let base_min = 500000, base_max = 700000;
+    if(jp==='work'||jp==='daily'){ base_min=450000; base_max=600000; }
+    if(jp==='biz'){                base_min=600000; base_max=800000; }
+
+    result.initial_min = Math.round((base_min + 20000 + 100000) * headcount);
+    result.initial_max = Math.round((base_max + 30000 + 300000) * headcount);
+    result.monthly     = 0;
+    result.breakdown   = ['紹介料：想定年収の25%（約50〜80万円/人）','申請費用：2〜3万円/人','実費：10〜30万円/人'];
+    result.note = '※日本語レベル・職種・経験により変動します';
+  }
+
+  if(system==='r_ginou'){
+    result.initial_min = Math.round(200000 * headcount);
+    result.initial_max = Math.round(500000 * headcount);
+    result.monthly     = 30000 * headcount;
+    result.breakdown   = ['監理費：月2〜5万円/人','送出機関手数料・渡航費等'];
+    result.note = '※技能実習は助成金よりも受入費用の確認が重要です。個別見積りをご依頼ください';
+  }
+
+  return result;
+}
+
+function renderEstimate(res){
+  if(!res.initial_min && !res.monthly) return '';
+  const fmt = n => n.toLocaleString('ja-JP');
+  return `
+    <div class="estimate-box">
+      <div class="estimate-title">💴 想定コスト（概算）</div>
+      <div class="estimate-section">
+        <div class="estimate-label">【初期費用】</div>
+        ${res.breakdown.map(b=>`<div class="estimate-item">・${b}</div>`).join('')}
+        <div class="estimate-total">▶ 初期合計：¥${fmt(res.initial_min)} 〜 ¥${fmt(res.initial_max)}</div>
+      </div>
+      <div class="estimate-section">
+        <div class="estimate-label">【月額費用】</div>
+        <div class="estimate-item">${res.monthly>0?`・管理費：¥${fmt(res.monthly)}/月`:'・なし'}</div>
+      </div>
+      ${res.note?`<div class="estimate-country-note">${res.note}</div>`:''}
+      <div class="estimate-caution">
+        ※実費は国・時期・条件により変動します<br>
+        ※正式なお見積は個別に算出いたします
+      </div>
+    </div>`;
+}
+
+
+function buildProposalComment(system){
+  const comments = {
+    r_overseas: '海外特定技能を主軸とし、安定採用を優先する構成が現実的です。国内特定技能を補助的に並行検討することで、早期戦力化の可能性も残せます。',
+    r_domestic: '国内特定技能は即戦力化のメリットがありますが、採用難易度が高いため、海外採用との並行運用を推奨します。',
+    r_ikusei:   '育成就労（2027年4月施行予定）は長期定着を見据えた採用に有効です。施行後を見越した先行準備として検討を進めることをお勧めします。',
+    r_gijin:    '技術・人文知識・国際業務は職務内容による個別判断となります。専門職・管理職ポジションの整備と合わせてご検討ください。',
+    r_ginou:    '技能実習制度は廃止予定のため、中長期的には育成就労・特定技能への移行計画を並行して検討することをお勧めします。',
+  };
+  const text = comments[system];
+  if(!text) return '';
+  return `
+    <div style="margin-top:12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:9px;padding:13px 16px;font-size:12.5px;color:var(--dark);line-height:1.75">
+      <div style="font-size:11px;font-weight:700;color:#15803D;margin-bottom:5px">💬 提案コメント</div>
+      ${text}
+    </div>`;
+}
+
+function renderEstimateWithProposal(res, system){
+  return renderEstimate(res) + buildProposalComment(system);
+}
+
+// ════ Supabase 案件保存 ════
+async function supaPost(table, body){
+  const {data, error} = await _sb.from(table).insert(body).select();
+  if(error) throw new Error(table + ': ' + error.message);
+  return data;
+}
+
+async function saveDealToSupabase(){
+  const btn = document.getElementById('save-deal-btn');
+  btn.disabled = true;
+  btn.textContent = '保存中...';
+
+  try{
+    // 1. companies に企業を登録
+    const compData = await supaPost('companies', {
+      name:            S.company || '（未入力）',
+      industry:        S.industry || '',
+      area:            S.area || '',
+      contact_person:  S.person || '',
+      phone:           S.tel || '',
+      email:           S.email || '',
+      status:          'hearing_done',
+      temperature:     'warm'
+    });
+    const companyId = compData[0].id;
+
+    // 2. deals に案件を登録
+    const dealData = await supaPost('deals', {
+      company_id:     companyId,
+      system:         S.system || '',
+      status:         'prospect',
+      headcount:      S.hireNum || 1,
+      country:        S.country || 'undecided',
+      japanese_level: S.jp || '',
+      temperature:    'warm',
+      memo:           S.memo || '',
+      created_by:     _currentUser?.id || null
+    });
+    const dealId = dealData[0].id;
+
+    // 3. estimates に見積を登録
+    const est = calcEstimate();
+    if(est.initial_min || est.monthly){
+      await supaPost('estimates', {
+        deal_id:     dealId,
+        initial_min: est.initial_min,
+        initial_max: est.initial_max,
+        monthly:     est.monthly,
+        system:      S.system || '',
+        note:        est.note || '',
+        is_formal:   false
+      });
+    }
+
+    // 4. requirement_checks に追加要件チェック結果を登録
+    const prefix = getActiveReqPrefix();
+    if(prefix){
+      const radios = document.querySelectorAll(`[name^="${prefix}_r"]`);
+      const seen = new Set();
+      for(const r of radios){
+        if(r.checked){
+          const item = r.closest('.extra-req-item');
+          if(!item) continue;
+          const titleEl = item.querySelector('.extra-req-item-title');
+          const memoEl  = item.querySelector('textarea');
+          const key = titleEl?.textContent?.trim();
+          if(!key || seen.has(key)) continue;
+          seen.add(key);
+          await supaPost('requirement_checks', {
+            deal_id:   dealId,
+            category:  prefix,
+            item_name: key,
+            status:    r.value,
+            memo:      memoEl?.value || ''
+          });
+        }
+      }
+    }
+
+    // 成功表示
+    btn.textContent = '✅ 保存完了！';
+    btn.style.background = '#16A34A';
+    document.getElementById('save-deal-result').innerHTML = `
+      <div style="margin-top:10px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:9px;padding:12px 16px;font-size:13px;color:#15803D;line-height:1.8">
+        ✅ 案件をSupabaseに保存しました<br>
+        企業ID：${companyId.substring(0,8)}...<br>
+        案件ID：${dealId.substring(0,8)}...
+      </div>`;
+
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = '💾 案件を保存する';
+    btn.style.background = '';
+    document.getElementById('save-deal-result').innerHTML = `
+      <div style="margin-top:10px;background:#FEF2F2;border:1px solid #FCA5A5;border-radius:9px;padding:12px 16px;font-size:13px;color:#DC2626">
+        ❌ 保存に失敗しました：${e.message}
+      </div>`;
+    console.error(e);
+  }
+}
+
 // ════ 助成金計算 ════
 function calcGrants(){
   const p=S.hireNum||3;const sm=document.getElementById('f-size').value==='small';const gs=[];
   if(S.sup.has('env')||S.system==='r_overseas'||S.system==='r_ikusei'){
-    const a=sm?570000:380000;
-    gs.push({name:'人材確保等支援助成金',scene:'多言語マニュアル・通訳・就労環境整備',amount:a,sub:`整備費の${sm?'2/3':'1/2'}`,color:'#0D9488',
-      desc:'外国人の雇用管理改善に要した費用への助成。多言語SOP・安全マニュアル・通訳配置等が対象。'});}
+    gs.push({name:'人材確保等支援助成金',scene:'多言語マニュアル・通訳・就労環境整備',amount:0,sub:'要確認',color:'#0D9488',
+      desc:'外国人の雇用管理改善に要した費用への助成。多言語SOP・安全マニュアル・通訳配置等が対象。支給額・対象可否は年度、コース、雇用区分等で異なるため要確認。'});}
   if(S.sup.has('ojt')||S.sup.has('jp_edu')){
-    let a=sm?(S.sup.has('ojt')&&S.sup.has('jp_edu')?760000:S.sup.has('ojt')?495000:380000)
-             :(S.sup.has('ojt')&&S.sup.has('jp_edu')?570000:S.sup.has('ojt')?380000:285000);
-    gs.push({name:'人材開発支援助成金',scene:`${S.sup.has('ojt')?'OJT・技能訓練':''}${S.sup.has('jp_edu')?' / 日本語教育':''}`,amount:a,sub:'訓練費＋賃金の一部',color:'#2563AB',
-      desc:'職業訓練・日本語教育にかかる費用と賃金の一部を助成。OJT+日本語の組み合わせで助成額増加。'});}
-  if(S.sup.has('trial')&&(S.system==='r_domestic'||S.system==='r_overseas'||S.system==='r_gijin')){
-    gs.push({name:'トライアル雇用助成金',scene:'試用雇用期間の賃金補助（最大3ヶ月）',amount:40000*3*p,sub:`月4万円×3ヶ月×${p}人`,color:'#D97706',
-      desc:'試用雇用期間中の賃金を補助。月額4万円×最長3ヶ月。採用リスクを軽減できます。'});}
+    gs.push({name:'人材開発支援助成金',scene:`${S.sup.has('ojt')?'OJT・技能訓練':''}${S.sup.has('jp_edu')?' / 日本語教育':''}`,amount:0,sub:'要確認',color:'#2563AB',
+      desc:'職業訓練・日本語教育にかかる費用と賃金の一部を助成。支給額・対象可否は年度、コース、雇用区分等で異なるため要確認。'});}
+  if(S.sup.has('trial')&&(S.system==='r_domestic'||S.system==='r_overseas')){
+    gs.push({name:'トライアル雇用助成金',scene:'試用雇用期間の賃金補助（最大3ヶ月）',amount:0,sub:'要確認',color:'#D97706',
+      desc:'試用雇用期間中の賃金を補助。支給額・対象可否は年度、コース、雇用区分等で異なるため要確認。'});}
   if(S.sup.has('sei')){
-    const u=sm?800000:600000;
-    gs.push({name:'キャリアアップ助成金',scene:'有期→正社員転換・処遇改善',amount:u*p,sub:`${fmt(u)}円/人×${p}人`,color:'#5B21B6',
-      desc:`有期→正規転換・賃金引き上げへの助成。中小企業は1人あたり最大${fmt(u)}円。`});}
+    gs.push({name:'キャリアアップ助成金',scene:'有期→正社員転換・処遇改善',amount:0,sub:'要確認',color:'#5B21B6',
+      desc:'有期→正規転換・賃金引き上げへの助成。支給額・対象可否は年度、コース、雇用区分等で異なるため要確認。'});}
   // 技能実習選択時は監理費等を追記
   if(S.system==='r_ginou'){
     gs.push({name:'技能実習 受入関連費用（参考）',scene:'監理費・送出機関手数料・渡航費等（助成金ではなく費用）',amount:0,sub:'別途個別見積り',color:'#6D28D9',
-      desc:'技能実習は助成金よりも受入費用の確認が重要です。監理費（月2〜5万円/人）、送出機関手数料（国により異なる）、渡航費・住居費等が発生します。トクシンネット協同組合にお問い合わせください。'});}
-  return{grants:gs,total:gs.reduce((s,g)=>s+g.amount,0)};
+      desc:'技能実習は助成金よりも受入費用の確認が重要です。監理費・送出機関手数料・渡航費・住居費等が発生します。トクシンネット協同組合にお問い合わせください。'});}
+  return{grants:gs,total:0};
 }
 function fmt(n){return n.toLocaleString('ja-JP');}
 
@@ -1173,28 +1844,41 @@ function printHearingSheet(){
     }).join('');
 
   const grantText=grants.length>0
-    ? grants.map(g=>`・${g.name}　最大${fmt(g.amount)}円（${g.sub}）`).join('\n')+'\n合計目安：最大'+fmt(total)+'円'
-    : '（助成金未選択）';
+    ? grants.map(g=>`・${g.name}（要確認）`).join('\n')+'\n※支給額・対象可否は年度、コース、雇用区分等で異なるため要確認'
+    : '（助成金候補未選択）';
 
   const html=`<!DOCTYPE html>
-<html lang="ja"><head><meta charset="UTF-8">
+<html lang="ja"><head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=1000, initial-scale=1.0">
 <title>採用ヒアリングシート_${S.company||'企業名未入力'}</title>
 <style>
-    body{font-family:-apple-system,'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic','YuGothic','Meiryo',sans-serif;margin:0;padding:0;background:white;color:#1E293B;}
-  @page{size:A4;margin:16mm 14mm;}
-  @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
-  .page{max-width:800px;margin:0 auto;padding:12px;}
-  .header-bar{background:#1E2761;color:white;padding:10px 16px;border-radius:6px 6px 0 0;margin-bottom:0;}
-  .header-main{font-size:16px;font-weight:900;letter-spacing:.04em;}
-  .header-sub{font-size:10.5px;opacity:.8;margin-top:2px;}
-  .header-right{display:flex;justify-content:space-between;background:#2563AB;color:white;padding:7px 16px;margin-bottom:12px;font-size:11px;border-radius:0 0 6px 6px;}
-  .section{margin-bottom:10px;}
-  .section-title{background:#1E293B;color:white;padding:5px 12px;font-size:11.5px;font-weight:700;border-radius:4px;margin-bottom:6px;}
+  *{box-sizing:border-box;}
+  body{
+    font-family:'Yu Gothic','YuGothic','Hiragino Kaku Gothic ProN','Hiragino Sans','Meiryo',sans-serif;
+    margin:0;padding:0;background:white;color:#1E293B;
+    font-size:12px;line-height:1.6;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  @page{size:A4 portrait;margin:12mm 12mm 14mm 12mm;}
+  @media print{
+    body{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .page{width:100%;max-width:100%;padding:0;}
+    .no-print{display:none;}
+  }
+  .page{width:170mm;max-width:170mm;margin:0 auto;padding:4mm 0;}
+  .header-bar{background:#1E2761;color:white;padding:9px 14px;border-radius:5px 5px 0 0;margin-bottom:0;}
+  .header-main{font-size:15px;font-weight:900;letter-spacing:.04em;}
+  .header-sub{font-size:10px;opacity:.8;margin-top:2px;}
+  .header-right{display:flex;justify-content:space-between;background:#2563AB;color:white;padding:6px 14px;margin-bottom:10px;font-size:11px;border-radius:0 0 5px 5px;}
+  .section{margin-bottom:9px;page-break-inside:avoid;}
+  .section-title{background:#1E293B;color:white;padding:4px 10px;font-size:11px;font-weight:700;border-radius:3px;margin-bottom:5px;}
   table{width:100%;border-collapse:collapse;}
-  .label-cell{background:#F1F5F9;font-size:11px;font-weight:700;padding:7px 10px;border:1px solid #ccc;white-space:nowrap;min-width:80px;}
-  .val-cell{font-size:12px;padding:7px 10px;border:1px solid #ccc;}
-  .system-badge{display:inline-block;background:#0D9488;color:white;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:700;margin-bottom:6px;}
-  .footer-note{font-size:9.5px;color:#94A3B8;text-align:center;margin-top:14px;padding-top:8px;border-top:1px solid #E2E8F0;}
+  .label-cell{background:#F1F5F9;font-size:10.5px;font-weight:700;padding:6px 8px;border:1px solid #ccc;white-space:nowrap;min-width:72px;}
+  .val-cell{font-size:11.5px;padding:6px 8px;border:1px solid #ccc;}
+  .system-badge{display:inline-block;background:#0D9488;color:white;border-radius:5px;padding:3px 10px;font-size:11.5px;font-weight:700;margin-bottom:4px;}
+  .footer-note{font-size:9px;color:#64748B;text-align:left;margin-top:14px;padding:9px 12px;border-top:1.5px solid #E2E8F0;background:#F8FAFC;border-radius:4px;line-height:1.75;page-break-inside:avoid;}
 </style>
 </head><body>
 <div class="page">
@@ -1299,30 +1983,34 @@ function printHearingSheet(){
   </div>
 
   <div class="section">
-    <div class="section-title">▼ 推奨制度・助成金試算　Recommended System & Grant Estimate</div>
+    <div class="section-title">▼ 推奨制度・活用候補助成金　Recommended System & Grant Candidates</div>
     <table>
       <tr>
-        <td class="label-cell">推奨制度</td>
-        <td class="val-cell"><span class="system-badge">${r.icon||''} ${r.name||'（未選択）'}</span></td>
+        <td class="label-cell">推奨制度（目安）</td>
+        <td class="val-cell"><span class="system-badge">${r.icon||''} ${r.name||'（未選択）'}</span>
+          <div style="font-size:10px;color:#64748B;margin-top:4px">※制度適用可否は業務内容・事業所要件・最新情報により個別判断となります</div>
+        </td>
       </tr>
       <tr>
-        <td class="label-cell">助成金目安</td>
+        <td class="label-cell">活用候補助成金</td>
         <td class="val-cell" style="white-space:pre-line;font-size:11.5px">${grantText}</td>
       </tr>
     </table>
   </div>
 
   <div class="footer-note">
+    <strong>⚠️ ご注意：</strong>本シートは制度の方向性判断を目的としたものです。在留資格取得可否・助成金の適用可否等は、業務内容・事業所要件・最新制度・個別審査により異なります。最終判断は行政書士・社労士等の専門家確認を推奨します。<br>
     このシートは採用候補者のマッチング精度向上を目的としたヒアリング用です。記載内容は厳重に管理いたします。
     　トクシングループ　帰国後キャリア支援事業　ver.2.0　　作成日：${today}
   </div>
 </div>
-<scr'+'ipt>window.onload=()=>{window.print();}<\/scr'+'ipt>
+<script>window.onload=function(){window.print();}<\/script>
 </body></html>`;
 
-  const win=window.open('','_blank','width=900,height=700');
-  win.document.write(html);
-  win.document.close();
+  const blob = new Blob([html], {type:'text/html;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const win = window.open(url, '_blank', 'width=960,height=750');
+  setTimeout(()=>URL.revokeObjectURL(url), 10000);
 }
 
 // ════ Excel出力 ════
@@ -1387,8 +2075,8 @@ function generateExcel(){
     ['  ▼ 推奨制度  Recommended System','','','','','','','','','','','','','','',''],
     [r.name||'（未選択）','','','','','','','','','','','','','','',''],
     ['','','','','','','','','','','','','','','',''],
-    ['  ▼ 活用可能な助成金合計目安  Grant Estimate','','','','','','','','','','','','','','',''],
-    [`最大 ${fmt(total)}円（目安）　採用予定 ${S.hireNum}人`,'',...grants.map(g=>`${g.name}：最大${fmt(g.amount)}円`)],
+    ['  ▼ 活用候補となる助成金  Grant Candidates（支給額・対象可否は年度・コース等により異なるため要確認）','','','','','','','','','','','','','','',''],
+    [`採用予定 ${S.hireNum}人`,'',...grants.map(g=>`${g.name}（要確認）`)],
     ['','','','','','','','','','','','','','','',''],
     ['このシートは採用候補者のマッチング精度向上を目的としたヒアリング用です。記載内容は厳重に管理いたします。　トクシングループ　帰国後キャリア支援事業','','','','','','','','','','','','','','',''],
   ];
@@ -1476,9 +2164,9 @@ function buildSummary(){
       <div class="grant-top">
         <div style="display:flex;align-items:flex-start;gap:10px;flex:1;min-width:0">
           <div class="gt-bar" style="background:${g.color}"></div>
-          <div><div class="gt-name">${g.name}</div><div class="gt-scene">${g.scene}（${g.sub}）</div></div>
+          <div><div class="gt-name">${g.name}</div><div class="gt-scene">${g.scene}</div></div>
         </div>
-        <div class="gt-amount" style="color:${g.color}">最大 ${fmt(g.amount)}円<small>（目安）</small></div>
+        <div class="gt-amount" style="color:${g.color};font-size:13px">要確認<small>（金額・対象は年度等により異なる）</small></div>
       </div>
       <div class="grant-desc">${g.desc}</div>
     </div>`).join('')
@@ -1583,14 +2271,23 @@ function buildSummary(){
 
         <!-- 助成金 -->
         <div class="sum-sec">
-          <div class="sum-sec-title">活用可能な助成金（目安）</div>
-          <div class="grant-list">${grantRows}</div>
-          ${total>0?`<div class="total-box"><div class="tl">🎉 合計目安（採用予定 ${S.hireNum}人）</div><div class="tv">最大 ${fmt(total)}円</div></div>`:''}
+          <div class="sum-sec-title">活用候補となる助成金</div>
+          ${grants.length>0?`<div class="grant-list">${grantRows}</div>`:''}
+          <div style="background:#FFF7ED;border:1px solid #FED7AA;border-radius:9px;padding:13px 16px;font-size:12.5px;color:#92400E;line-height:1.8;margin-top:8px">
+            <strong>活用候補：</strong><br>
+            ・人材確保等支援助成金<br>
+            ・人材開発支援助成金<br>
+            ・キャリアアップ助成金<br>
+            ・トライアル雇用助成金<br>
+            <span style="font-size:11.5px">※支給額・対象可否は年度、コース、雇用区分等で異なるため要確認</span>
+          </div>
         </div>
 
         <div class="sum-caution">
-          ⚠️ <strong>ご注意：</strong>本サマリーは概算です。在留資格・助成金の適用可否・金額は要件により異なります。実際の申請は<strong>社労士等の専門家</strong>にご確認ください。
+          ⚠️ <strong>ご注意：</strong>本サマリーは制度の方向性判断を目的としたものです。在留資格取得可否・助成金の適用可否・金額は業務内容、事業所要件、最新制度、個別審査により異なります。実際の申請・判断は<strong>行政書士・社労士等の専門家</strong>にご確認ください。
         </div>
+
+        ${buildSummaryExtra()}
 
         <!-- ネクストアクション -->
         <div class="sum-sec">
@@ -1600,6 +2297,13 @@ function buildSummary(){
           <div class="na-item"><div class="na-num">3</div><div class="na-text">採用人数・時期のスケジュールを社内で確認する</div></div>
         </div>
 
+        <div style="margin-bottom:14px">
+          <button id="save-deal-btn" onclick="saveDealToSupabase()"
+            style="width:100%;background:linear-gradient(135deg,#1E3A8A,#2563AB);color:white;border:none;border-radius:11px;font-family:inherit;font-size:16px;font-weight:800;padding:16px 24px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px;">
+            💾 案件を保存する（営業管理に登録）
+          </button>
+          <div id="save-deal-result"></div>
+        </div>
         <div class="cta-area">
           <button class="cta-dl" onclick="downloadExcel()">📥 Excelで保存</button>
           <button class="cta-print" onclick="printHearingSheet()">🖨️ ヒアリングシートをPDF保存</button>
@@ -1622,4 +2326,3 @@ document.getElementById('sec-1').classList.add('active');
 </script>
 </body>
 </html>
-
