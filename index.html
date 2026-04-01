@@ -390,7 +390,7 @@ footer strong{color:var(--gold);}
         <div class="check-item" onclick="pickCountry(this,'vietnam')"><div class="check-box"></div>
           <div><div class="ck-label">🇻🇳 ベトナム</div><div class="ck-sub">基準</div></div></div>
         <div class="check-item" onclick="pickCountry(this,'indonesia')"><div class="check-box"></div>
-          <div><div class="ck-label">🇮🇩 インドネシア</div><div class="ck-sub">粗利◎</div></div></div>
+          <div><div class="ck-label">🇮🇩 インドネシア</div></div></div>
         <div class="check-item" onclick="pickCountry(this,'myanmar')"><div class="check-box"></div>
           <div><div class="ck-label">🇲🇲 ミャンマー</div><div class="ck-sub"></div></div></div>
         <div class="check-item selected" onclick="pickCountry(this,'undecided')"><div class="check-box" style="background:var(--teal);border-color:var(--teal);color:white">✓</div>
@@ -1335,19 +1335,19 @@ function onIndustryChange(){
 // ════ 制度データ ════
 const RESULTS={
   r_domestic:{name:'特定技能（国内採用）',icon:'⚡',bg:'linear-gradient(135deg,#1E3A8A,#2563AB)',
-    tags:[{t:'迅速採用◎',c:'tag-green'},{t:'在留資格変更',c:'tag-blue'},{t:'北陸：採用難',c:'tag-red'}],
+    tags:[{t:'最短1〜3ヶ月',c:'tag-green'},{t:'在留資格変更',c:'tag-blue'},{t:'北陸：採用難',c:'tag-red'}],
     items:[{l:'採用〜就労目安',v:'1〜3ヶ月（最速）'},{l:'対象者',v:'元技実修了者・在留特定技能・転職者・留学生等'},{l:'在留期間',v:'最長5年（特定技能1号）'},{l:'手続き',v:'在留資格変更申請のみ / 比較的シンプル'}],
     desc:'国内在留の外国人を特定技能に変更するルートです。入国手続きが不要なため採用〜就労が一般的に1〜3か月程度（要確認）。技実2号修了者は試験免除。',
     career:null,
     note:{cls:'note-red',text:'📍 北陸注意：国内特定技能は都市志向が強く、地方への採用は難しいケースが多いです。海外採用ルートの併用を推奨します。'}},
   r_overseas:{name:'特定技能（海外採用）',icon:'🌏',bg:'linear-gradient(135deg,#134E4A,#0D9488)',
-    tags:[{t:'16分野対応',c:'tag-blue'},{t:'北陸：有力◎',c:'tag-green'},{t:'4〜6ヶ月',c:'tag-gold'}],
+    tags:[{t:'16分野対応',c:'tag-blue'},{t:'4〜6ヶ月',c:'tag-gold'}],
     items:[{l:'採用〜就労目安',v:'4〜6ヶ月'},{l:'要件',v:'技能試験＋日本語試験合格（技実2号修了者免除）'},{l:'在留期間',v:'最長5年（特定技能1号）→ 2号へ移行可'},{l:'採用窓口',v:'トクシンベトナム（ハノイ現地法人）経由'}],
     desc:'ベトナム等から直接採用するルートです。トクシンベトナムが現地発掘・面接代行を行い、入国後の生活支援・登録支援まで一本化します。北陸製造業に最も有力な選択肢です。',
     career:[{n:'特定技能1号',p:'最長5年',bg:'#0D9488'},{n:'特定技能2号',p:'無制限・家族帯同',bg:'#1D4ED8'}],
     note:{cls:'note-green',text:'📍 北陸：トクシンベトナムの現地ネットワークを活用し、製造業に適した人材を安定確保できます。窓口はトクシントラスト一本。'}},
   r_ikusei:{name:'育成就労（2027年4月施行予定）',icon:'🎓',bg:'linear-gradient(135deg,#134E4A,#0D9488)',
-    tags:[{t:'2027年4月施行予定',c:'tag-gold'},{t:'原則3年育成',c:'tag-blue'},{t:'北陸：有力◎',c:'tag-green'}],
+    tags:[{t:'2027年4月施行予定',c:'tag-gold'},{t:'原則3年育成',c:'tag-blue'}],
     items:[{l:'在留期間',v:'原則3年（育成期間）'},{l:'日本語要件',v:'入国前A1以上 / 就労1年後A2以上'},{l:'目標',v:'3年で特定技能1号水準まで育成（要件充足の場合）'},{l:'転籍',v:'条件付きで転籍可（1〜2年就労後）'}],
     desc:'技能実習に代わる制度として導入予定（2027年4月施行予定）。3年間で特定技能1号水準への育成を目指す制度です。特定技能への移行は要件を満たした場合に限られるため、詳細は要確認。施行前のため最新情報の確認が必要です。',
     career:[{n:'育成就労',p:'原則3年',bg:'#0D9488'},{n:'特定技能1号',p:'最長5年（要件充足の場合）',bg:'#2563AB'},{n:'特定技能2号',p:'無制限',bg:'#1E3A8A'}],
@@ -1568,11 +1568,7 @@ function calcEstimate(){
     result.breakdown   = ['紹介料：38万円/人','申請費用：2〜5万円/人','実費：渡航・住居等'];
     result.note = country==='undecided'
       ? '※国未定のためベトナム基準で算出しています'
-      : country==='indonesia'
-        ? '※インドネシアは実費が若干抑えられる傾向があります'
-        : country==='myanmar'
-          ? '※ミャンマーは実費がやや抑えられる傾向があります'
-          : '';
+      : '';
   }
 
   if(system==='r_ikusei'){
