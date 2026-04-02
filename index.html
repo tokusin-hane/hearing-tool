@@ -2535,7 +2535,7 @@ function openEstModal(){
   const isBangladesh = (s.country === 'bangladesh');
   const isMukae35 = isIndonesia || isBangladesh || s.country === 'myanmar';
 
-  const monthly = isGijin ? 0 : isGinou ? (prices.kanri + prices.okuri) * hc : 30000 * hc;
+  const monthly = isGijin ? 0 : isGinou ? 30000 * hc : 30000 * hc;
 
   // 今日の日付
   const today = new Date();
@@ -2606,12 +2606,13 @@ function openEstModal(){
     init1Rows += row('⑥','入国時出迎え交通費',hc,'名',isIndonesia?35000:25000,'実費');
     init1Total = (10000+10000+(15000+60000+(isIndonesia?35000:25000))*hc);
   } else {
-    init1Rows += row('①','在留資格認定証明書交付申請手数料',hc,'名',prices.zaiyuu,'');
-    init1Rows += row('②','雇い入れ時健康診断費用',hc,'名',prices.kensin,'実費');
-    init1Rows += row('③','入国渡航費',hc,'名',prices.tokou,'実費・航空チケット等');
-    init1Rows += row('④','入国時出迎え交通費',hc,'名',prices.mukae,isIndonesia?'実費・成田/羽田着':'実費・就業場所により変動');
-    init1Rows += row('⑤','紹介料',hc,'名',prices.shokai,'');
-    init1Total = (prices.kensin + prices.tokou + prices.mukae + prices.shokai) * hc;
+    const stdMukae = isMukae35 ? 35000 : 25000;
+    init1Rows += row('①','在留資格認定証明書交付申請手数料',hc,'名',0,'');
+    init1Rows += row('②','雇い入れ時健康診断費用',hc,'名',15000,'実費');
+    init1Rows += row('③','入国渡航費',hc,'名',60000,'実費・航空チケット等');
+    init1Rows += row('④','入国時出迎え交通費',hc,'名',stdMukae,isMukae35?'実費・成田/羽田着':'実費・就業場所により変動');
+    init1Rows += row('⑤','紹介料',hc,'名',280000,'');
+    init1Total = (15000 + 60000 + stdMukae + 280000) * hc;
   }
 
   // 月額費用 行
