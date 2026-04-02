@@ -90,6 +90,13 @@ main{max-width:760px;margin:0 auto;padding:28px 20px 100px;}
 .check-item.checked{border-color:var(--blue);background:#EFF6FF;}
 .check-box{width:20px;height:20px;border-radius:5px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:.15s;margin-top:1px;}
 .check-item.checked .check-box{background:var(--blue);border-color:var(--blue);color:white;}
+/* 国選択ラジオ風 */
+.country-item{display:flex;align-items:flex-start;gap:10px;background:var(--lgray);border:2px solid var(--border);border-radius:11px;padding:12px 14px;cursor:pointer;transition:.2s;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+.country-item:hover{border-color:var(--teal);background:#F0FDFA;}
+.country-item.selected{border-color:var(--teal);background:#F0FDFA;box-shadow:0 0 0 3px rgba(13,148,136,0.15);}
+.country-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;margin-top:2px;transition:.2s;display:flex;align-items:center;justify-content:center;}
+.country-item.selected .country-radio{border-color:var(--teal);background:var(--teal);}
+.country-item.selected .country-radio::after{content:'';width:6px;height:6px;border-radius:50%;background:white;}
 .ck-label{font-size:14px;font-weight:700;line-height:1.4;}
 .ck-sub{font-size:11.5px;color:var(--gray);margin-top:3px;line-height:1.5;}
 
@@ -456,16 +463,24 @@ footer strong{color:var(--gold);}
     <div class="field">
       <label>採用予定国（任意）</label>
       <div class="check-grid" id="country-grp" style="grid-template-columns:1fr 1fr 1fr 1fr;">
-        <div class="check-item" onclick="pickCountry(this,'vietnam')"><div class="check-box"></div>
-          <div><div class="ck-label">🇻🇳 ベトナム</div><div class="ck-sub">基準</div></div></div>
-        <div class="check-item" onclick="pickCountry(this,'indonesia')"><div class="check-box"></div>
-          <div><div class="ck-label">🇮🇩 インドネシア</div></div></div>
-        <div class="check-item" onclick="pickCountry(this,'myanmar')"><div class="check-box"></div>
-          <div><div class="ck-label">🇲🇲 ミャンマー</div><div class="ck-sub"></div></div></div>
-        <div class="check-item selected" onclick="pickCountry(this,'undecided')"><div class="check-box" style="background:var(--teal);border-color:var(--teal);color:white">✓</div>
-          <div><div class="ck-label">🌐 未定</div><div class="ck-sub">標準で算出</div></div></div>
+        <div class="country-item" data-val="vietnam" onclick="pickCountry(this,'vietnam')">
+          <div class="country-radio"></div>
+          <div><div class="ck-label">🇻🇳 ベトナム</div><div class="ck-sub">実績豊富・安定供給</div></div>
+        </div>
+        <div class="country-item" data-val="indonesia" onclick="pickCountry(this,'indonesia')">
+          <div class="country-radio"></div>
+          <div><div class="ck-label">🇮🇩 インドネシア</div><div class="ck-sub">明るく協調性が高い</div></div>
+        </div>
+        <div class="country-item" data-val="myanmar" onclick="pickCountry(this,'myanmar')">
+          <div class="country-radio"></div>
+          <div><div class="ck-label">🇲🇲 ミャンマー</div><div class="ck-sub">真面目・勤勉</div></div>
+        </div>
+        <div class="country-item" data-val="undecided" onclick="pickCountry(this,'undecided')">
+          <div class="country-radio"></div>
+          <div><div class="ck-label">🌐 未定</div><div class="ck-sub">標準値で算出</div></div>
+        </div>
       </div>
-      <div style="font-size:11px;color:var(--gray);margin-top:6px">※国の選択は費用や採用方法に影響します。未定の場合は標準で算出します</div>
+      <div style="font-size:11px;color:var(--gray);margin-top:6px">※国の選択は採用方法・人材特性に影響します。未定の場合は標準値で算出します</div>
     </div>
     <div class="field">
       <label>メールアドレス</label>
@@ -1182,18 +1197,8 @@ function reset(){
   document.querySelectorAll('.weight-btn').forEach(b=>b.classList.remove('active'));
   SKILLS.forEach(sk=>S.skills[sk]=null);
   W_KEYS.forEach(k=>S.weights[k]=null);
-  document.querySelectorAll('#country-grp .check-item').forEach(el=>{
-    el.classList.remove('selected');
-    const box=el.querySelector('.check-box');
-    box.textContent='';box.style.background='';box.style.borderColor='';box.style.color='';
-  });
-  // 「未定」をデフォルト選択に戻す
-  const defCountry=document.querySelector('#country-grp .check-item:last-child');
-  if(defCountry){
-    defCountry.classList.add('selected');
-    const b=defCountry.querySelector('.check-box');
-    b.textContent='✓';b.style.background='var(--teal)';b.style.borderColor='var(--teal)';b.style.color='white';
-  }
+  // 国選択リセット（未定に戻す）
+  document.querySelectorAll('#country-grp .country-item').forEach(el=>el.classList.remove('selected'));
   S.country='undecided';
   document.getElementById('next-1').classList.remove('on');
   document.getElementById('system-display').innerHTML='';
@@ -1215,15 +1220,12 @@ function ck(el,grp,val){
   else{box.textContent='';S[grp].delete(val);}
 }
 function pickCountry(el,val){
-  document.querySelectorAll('#country-grp .check-item').forEach(r=>{
-    r.classList.remove('selected');
-    const box=r.querySelector('.check-box');
-    box.textContent='';box.style.background='';box.style.borderColor='';box.style.color='';
-  });
+  // 全選択解除
+  document.querySelectorAll('#country-grp .country-item').forEach(r=>r.classList.remove('selected'));
+  // 選択
   el.classList.add('selected');
-  const box=el.querySelector('.check-box');
-  box.textContent='✓';box.style.background='var(--teal)';box.style.borderColor='var(--teal)';box.style.color='white';
-  S.country=val;
+  // S.countryを確実に更新（最重要）
+  S.country = val;
 }
 function pickRadio(el,grp,val){
   document.querySelectorAll(`#jp-grp .radio-item`).forEach(r=>r.classList.remove('selected'));
@@ -1794,64 +1796,72 @@ function renderEstimate(res){
   if(!res.initial_min && !res.monthly) return '';
   const fmt = n => n.toLocaleString('ja-JP');
   const country = S.country || 'undecided';
-  const system = S.system;
+  const hc = S.hireNum || 1;
 
-  // インドネシア選択時の補足文
-  const indonesiaNoteHTML = country === 'indonesia'
-    ? `<div class="estimate-country-note">※インドネシアは近年、安定した人材供給と定着性の観点から、採用バランスの良い国として選ばれるケースが増えています</div>`
-    : '';
+  // ④ 国別人材特徴（営業用）
+  const countryFeatures = {
+    vietnam: {flag:'🇻🇳', name:'ベトナム', feature:'真面目・学習意欲が高い', jp:'N4〜N3レベル', speed:'約4〜6ヶ月'},
+    indonesia: {flag:'🇮🇩', name:'インドネシア', feature:'明るく協調性が高い。国内人材も活用可能', jp:'N4〜N3レベル', speed:'約3〜4ヶ月（国内人材はさらに早い）'},
+    myanmar: {flag:'🇲🇲', name:'ミャンマー', feature:'真面目・勤勉で定着率が高い', jp:'N5〜N4レベル', speed:'約4〜6ヶ月'},
+    bangladesh: {flag:'🇧🇩', name:'バングラデシュ', feature:'英語も話せる。責任感が強い', jp:'N5〜N4レベル', speed:'約3〜5ヶ月'},
+  };
+  const cf = countryFeatures[country];
+  const countryInfoHTML = cf ? `
+    <div style="background:#F0FDFA;border:1px solid #99F6E4;border-radius:8px;padding:10px 14px;margin-bottom:10px;font-size:11.5px;line-height:2;">
+      <div style="font-weight:700;color:#0F766E;margin-bottom:4px;">${cf.flag} ${cf.name}の人材特徴</div>
+      <div>👤 特徴：${cf.feature}</div>
+      <div>🗣️ 日本語：${cf.jp}</div>
+      <div>⏱️ 採用スピード：${cf.speed}</div>
+    </div>` : '';
 
-  // ベトナム以外の国選択時（選択肢がある旨）
-  const altCountryNoteHTML = (country !== 'undecided' && country !== 'vietnam')
-    ? `<div class="estimate-country-note" style="background:#F0FDF4;border-color:#86EFAC;color:#166534;">※採用状況や時期により、他国からの採用が選択されるケースもありますが、今回はご選択に基づき算出しています</div>`
-    : '';
+  // ③ 1人あたり・合計の表示
+  const perPerson = res.initial_per ? Math.round(res.initial_per/10000) : Math.round(res.initial_min/hc/10000);
+  const totalInit = Math.round(res.initial_min/10000);
+  const perMonthly = res.monthly > 0 ? Math.round((res.monthly/hc)/10000) : 0;
+  const totalMonthly = Math.round(res.monthly/10000);
 
-  // 1人あたりの初期費用
-  const perPersonHTML = res.initial_per
-    ? `<div style="font-size:12px;color:var(--teal);font-weight:700;margin-bottom:4px;">1人あたり：約${fmt(Math.round(res.initial_per/10000))}万円〜（目安）</div>`
-    : '';
+  const initHTML = `
+    <div style="margin-bottom:6px;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px dashed var(--border);">
+        <span style="color:var(--gray);">1人あたり（目安）</span>
+        <span style="font-weight:700;color:var(--dark);">約${perPerson}万円〜</span>
+      </div>
+      ${hc>1?`<div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0;">
+        <span style="color:var(--gray);">${hc}名合計（目安）</span>
+        <span style="font-weight:700;color:var(--teal);">約${totalInit}万円〜</span>
+      </div>`:''}
+    </div>`;
 
-  // 送り出し機関名
-  const orgHTML = res.org
-    ? `<div style="font-size:12px;color:var(--gray);margin-top:4px;">窓口：${res.org}</div>`
-    : '';
-
-  // 費用項目リスト
-  const itemsHTML = res.items.length > 0
-    ? `<div style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px;">${
-        res.items.map(it=>`<div style="display:flex;justify-content:space-between;font-size:11.5px;padding:2px 0;"><span style="color:var(--gray);">${it.label}</span><span style="color:var(--dark);font-weight:600;">${it.val}</span></div>`).join('')
-      }</div>`
-    : '';
-
-  const systemNoteHTML = `<div style="font-size:11px;color:var(--gray);margin-top:6px;">※国の選択は費用や採用方法に影響します。制度は採用条件に基づき判定されています</div>`;
-
-  const headcount = S.hireNum || 1;
-  const totalLabel = headcount > 1
-    ? `${headcount}名合計：約${fmt(Math.round(res.initial_min/10000))}万円〜${fmt(Math.round(res.initial_max/10000))}万円程度（目安）`
-    : `初期費用目安：約${fmt(Math.round(res.initial_min/10000))}万円〜（目安）`;
+  const monthlyHTML = res.monthly > 0 ? `
+    <div style="margin-bottom:4px;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px dashed var(--border);">
+        <span style="color:var(--gray);">1人あたり/月</span>
+        <span style="font-weight:700;color:var(--dark);">${perMonthly}万円</span>
+      </div>
+      ${hc>1?`<div style="display:flex;justify-content:space-between;font-size:12px;padding:4px 0;">
+        <span style="color:var(--gray);">${hc}名合計/月</span>
+        <span style="font-weight:700;color:var(--teal);">${totalMonthly}万円</span>
+      </div>`:''}
+    </div>` : '<div style="font-size:12px;color:var(--gray);">なし</div>';
 
   return `
     <div class="estimate-box">
-      <div class="estimate-title">💴 想定コスト（概算）</div>
-      ${indonesiaNoteHTML}
-      ${altCountryNoteHTML}
+      <div class="estimate-title">💴 採用コスト目安</div>
+      ${countryInfoHTML}
       <div class="estimate-section">
         <div class="estimate-label">【初期費用（1年目）】</div>
-        ${perPersonHTML}
-        <div class="estimate-total">▶ ${totalLabel}</div>
-        <div style="font-size:11px;color:var(--gray);margin-top:4px;">※条件・時期により変動します</div>
-        ${itemsHTML}
-        ${orgHTML}
+        ${initHTML}
+        <div style="font-size:10px;color:var(--gray);margin-top:2px;">※健診・渡航費等の実費含む。条件・時期により変動</div>
       </div>
       <div class="estimate-section">
         <div class="estimate-label">【月額管理費】</div>
-        <div class="estimate-item">${res.monthly>0?`<strong>${fmt(Math.round(res.monthly/10000))}万円/月</strong>（${S.hireNum||1}名分）`:'なし'}</div>
+        ${monthlyHTML}
       </div>
       ${res.note?`<div class="estimate-country-note">${res.note}</div>`:''}
-      ${systemNoteHTML}
+      <div style="font-size:11px;color:var(--gray);margin-top:6px;">※制度は採用条件に基づき判定されています</div>
       <div class="estimate-caution">
-        ※本概算は判断材料としてご提示しています<br>
-        ※詳細お見積はヒアリング後に個別算出いたします
+        ※本概算は営業判断の参考値です<br>
+        ※正式なお見積はヒアリング後に個別算出いたします
       </div>
     </div>`;
 }
