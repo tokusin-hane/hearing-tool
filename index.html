@@ -1135,7 +1135,9 @@ function go(n){
 }
 function jumpTo(n){
   if(n>=cur)return;
-  document.getElementById(cur<=5?'sec-'+cur:'sec-r').classList.remove('active');
+  // 全セクションのactiveをリセット
+  document.querySelectorAll('.sec').forEach(el=>el.classList.remove('active'));
+  document.getElementById('sec-r').classList.remove('active');
   cur=n;
   document.getElementById('sec-'+cur).classList.add('active');
   renderProg();window.scrollTo({top:0,behavior:'smooth'});
