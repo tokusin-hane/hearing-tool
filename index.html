@@ -245,12 +245,72 @@ main{max-width:760px;margin:0 auto;padding:28px 20px 100px;}
 .cta-reset{background:var(--lgray);border:1.5px solid var(--border);color:var(--gray);padding:13px 20px;border-radius:11px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:.15s;}
 .cta-reset:hover{background:var(--border);color:var(--dark);}
 
-@media print{header,.prog-wrap,.cta-area,footer{display:none!important;}body{background:white;}.sum-body{padding:16px;}.summary-wrap{box-shadow:none;border:1px solid #ccc;}}
+@media print{
+  body > *:not(#est-modal){display:none!important;}
+  #est-modal{position:static!important;background:white!important;padding:0!important;display:block!important;}
+  #est-modal-inner{box-shadow:none!important;max-width:100%!important;border-radius:0!important;}
+  .est-toolbar,.est-no-print,.est-discount-row{display:none!important;}
+  [contenteditable]{border:none!important;background:transparent!important;}
+  body{background:white;}
+}
+/* ── 見積書モーダル ── */
+#est-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9999;overflow-y:auto;padding:24px 16px;}
+#est-modal.open{display:flex;align-items:flex-start;justify-content:center;}
+#est-modal-inner{background:white;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,0.18);width:100%;max-width:760px;overflow:hidden;}
+.est-toolbar{background:#1E2761;color:white;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.est-toolbar h3{font-size:14px;font-weight:700;margin:0;}
+.est-toolbar-btns{display:flex;gap:8px;}
+.est-btn{border:none;border-radius:7px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;}
+.est-btn-print{background:#0D9488;color:white;}
+.est-btn-close{background:rgba(255,255,255,0.15);color:white;}
+.est-body{padding:28px 32px 32px;}
+.est-doc{font-family:'Hiragino Sans','Yu Gothic','Meiryo',sans-serif;font-size:11px;color:#1E293B;}
+.est-doc-title{font-size:26px;font-weight:900;color:#1E2761;letter-spacing:.12em;margin-bottom:6px;}
+.est-header{display:flex;justify-content:space-between;margin-bottom:16px;gap:20px;}
+.est-to{flex:1;}
+.est-to-name{font-size:16px;font-weight:700;border-bottom:2.5px solid #1E2761;padding-bottom:4px;margin-bottom:8px;}
+.est-from{text-align:right;font-size:11px;line-height:2;color:#1E293B;}
+.est-from strong{font-size:13px;font-weight:800;color:#1E2761;display:block;}
+.est-cond{background:#F1F5F9;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:11px;display:grid;grid-template-columns:80px 1fr 80px 1fr;gap:4px 10px;}
+.est-cond-label{color:#64748B;font-weight:600;}
+.est-total-box{background:#1E2761;color:white;border-radius:8px;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.est-total-box .label{font-size:12px;font-weight:600;opacity:.85;}
+.est-total-box .amount{font-size:22px;font-weight:900;}
+.est-table{width:100%;border-collapse:collapse;margin-bottom:10px;}
+.est-table th{background:#0D9488;color:white;padding:6px 8px;font-size:10px;font-weight:700;text-align:center;}
+.est-table td{padding:5px 8px;font-size:11px;border-bottom:1px solid #E2E8F0;vertical-align:middle;}
+.est-table tr:nth-child(even) td{background:#F8FAFC;}
+.est-sec-hd td{background:#EFF6FF!important;color:#1E2761;font-weight:700;font-size:10px;padding:4px 8px;}
+.est-sub td{background:#F1F5F9!important;font-weight:700;color:#1E2761;}
+.est-grand td{background:#1E2761!important;color:white!important;font-weight:700;font-size:12px;}
+.est-tax td{background:#F8FAFC!important;color:#64748B;font-size:10px;}
+[contenteditable]{outline:none;border-bottom:1px dashed #93C5FD;padding:0 2px;min-width:16px;display:inline-block;cursor:text;}
+[contenteditable]:focus{background:#EFF6FF;border-radius:3px;border-bottom:2px solid #2563AB;}
+.est-r{text-align:right;}
+.est-c{text-align:center;}
+/* discount removed */
+.est-notes{font-size:10px;color:#64748B;line-height:2;border-top:1px solid #E2E8F0;padding-top:10px;margin-top:6px;}
 footer{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid var(--border);padding:8px 20px;font-size:11px;color:var(--gray);text-align:center;}
 footer strong{color:var(--gold);}
 </style>
 </head>
 <body>
+
+<!-- ════ 見積書モーダル ════ -->
+<div id="est-modal" onclick="if(event.target===this)closeEstModal()">
+  <div id="est-modal-inner">
+    <div class="est-toolbar est-no-print">
+      <h3>📄 見積書プレビュー（クリックで編集できます）</h3>
+      <div class="est-toolbar-btns">
+        <button class="est-btn est-btn-print" onclick="printEstimate()">🖨️ 印刷 / PDF保存</button>
+        <button class="est-btn est-btn-close" onclick="closeEstModal()">✕ 閉じる</button>
+      </div>
+    </div>
+    <div class="est-body">
+      <div id="est-doc-content" class="est-doc"></div>
+    </div>
+  </div>
+</div>
 <header>
   <div class="h-logo">
     <div class="logo-badge">🌏</div>
@@ -396,7 +456,7 @@ footer strong{color:var(--gold);}
         <div class="check-item selected" onclick="pickCountry(this,'undecided')"><div class="check-box" style="background:var(--teal);border-color:var(--teal);color:white">✓</div>
           <div><div class="ck-label">🌐 未定</div><div class="ck-sub">標準で算出</div></div></div>
       </div>
-      <div style="font-size:11px;color:var(--gray);margin-top:6px">※国により費用は変動します（未定の場合は標準で算出）</div>
+      <div style="font-size:11px;color:var(--gray);margin-top:6px">※国の選択は費用や採用方法に影響します。未定の場合は標準で算出します</div>
     </div>
     <div class="field">
       <label>メールアドレス</label>
@@ -1342,10 +1402,10 @@ const RESULTS={
     note:{cls:'note-red',text:'📍 北陸注意：国内特定技能は都市志向が強く、地方への採用は難しいケースが多いです。海外採用ルートの併用を推奨します。'}},
   r_overseas:{name:'特定技能（海外採用）',icon:'🌏',bg:'linear-gradient(135deg,#134E4A,#0D9488)',
     tags:[{t:'16分野対応',c:'tag-blue'},{t:'4〜6ヶ月',c:'tag-gold'}],
-    items:[{l:'採用〜就労目安',v:'4〜6ヶ月'},{l:'要件',v:'技能試験＋日本語試験合格（技実2号修了者免除）'},{l:'在留期間',v:'最長5年（特定技能1号）→ 2号へ移行可'},{l:'採用窓口',v:'トクシンベトナム（ハノイ現地法人）経由'}],
-    desc:'ベトナム等から直接採用するルートです。トクシンベトナムが現地発掘・面接代行を行い、入国後の生活支援・登録支援まで一本化します。北陸製造業に最も有力な選択肢です。',
+    items:[{l:'採用〜就労目安',v:'4〜6ヶ月'},{l:'要件',v:'技能試験＋日本語試験合格（技実2号修了者免除）'},{l:'在留期間',v:'最長5年（特定技能1号）→ 2号へ移行可'},{l:'採用窓口',v:'国別送り出し機関経由（ベトナム：トクシンベトナム、インドネシア：LPK 等）'}],
+    desc:'海外から直接採用するルートです。国内の受入・生活支援・登録支援まで一本化します。北陸・東海地区の製造業に有力な選択肢です。',
     career:[{n:'特定技能1号',p:'最長5年',bg:'#0D9488'},{n:'特定技能2号',p:'無制限・家族帯同',bg:'#1D4ED8'}],
-    note:{cls:'note-green',text:'📍 北陸：トクシンベトナムの現地ネットワークを活用し、製造業に適した人材を安定確保できます。窓口はトクシントラスト一本。'}},
+    note:{cls:'note-green',text:'📍 北陸・東海：国別送り出し機関のネットワークを活用し、製造業に適した人材を安定確保できます。窓口はトクシントラスト一本。'}},
   r_ikusei:{name:'育成就労（2027年4月施行予定）',icon:'🎓',bg:'linear-gradient(135deg,#134E4A,#0D9488)',
     tags:[{t:'2027年4月施行予定',c:'tag-gold'},{t:'原則3年育成',c:'tag-blue'}],
     items:[{l:'在留期間',v:'原則3年（育成期間）'},{l:'日本語要件',v:'入国前A1以上 / 就労1年後A2以上'},{l:'目標',v:'3年で特定技能1号水準まで育成（要件充足の場合）'},{l:'転籍',v:'条件付きで転籍可（1〜2年就労後）'}],
@@ -1546,66 +1606,161 @@ function buildSummaryExtra(){
 }
 
 // ════ 見積計算 ════
+// 国別送り出し機関名
+function getSendingOrg(country, system) {
+  if(system === 'r_gijin') {
+    if(country==='vietnam'||country==='undecided') return 'トクシンベトナム';
+    if(country==='indonesia') return 'LPK（インドネシア）';
+    if(country==='myanmar'||country==='bangladesh') return 'アドセック株式会社';
+    return '海外送り出し機関';
+  }
+  if(country==='vietnam'||country==='undecided') return 'トクシンベトナム';
+  if(country==='indonesia') return 'LPK（インドネシア）';
+  if(country==='myanmar'||country==='bangladesh') return 'アドセック株式会社';
+  return '海外送り出し機関';
+}
+
 function calcEstimate(){
   const system = S.system;
   const headcount = S.hireNum || 1;
   const country = S.country || 'undecided';
 
-  let result = { initial_min:0, initial_max:0, monthly:0, breakdown:[], note:'' };
+  let result = { initial_per:0, initial_min:0, initial_max:0, monthly:0, items:[], note:'', org:'' };
 
+  // ── 特定技能（海外・国内） ──
   if(system==='r_overseas'||system==='r_domestic'){
-    const intro = 380000;
-    const monthly = 30000;
-    let misc_min = 150000;
-    let misc_max = 400000;
+    // 固定費（1人あたり）
+    const shokai = 280000;   // 紹介料（実態）
+    const kensin = 15000;    // 雇い入れ健診（実費）
+    const tokou  = 60000;    // 入国渡航費（実費・1年目のみ）
+    const mukae  = country==='indonesia' ? 35000 : 25000; // 出迎え交通費（インドネシアは成田/羽田）
+    // 在留資格認定証明書手数料：0円（岡山が巻き取り）
+    const initial_per = shokai + kensin + tokou + mukae;
 
-    if(country==='indonesia'){ misc_min*=0.9; misc_max*=0.9; }
-    if(country==='myanmar'){   misc_min*=0.85; misc_max*=0.85; }
-
-    result.initial_min = Math.round((intro + 20000 + misc_min) * headcount);
-    result.initial_max = Math.round((intro + 50000 + misc_max) * headcount);
-    result.monthly     = monthly * headcount;
-    result.breakdown   = ['紹介料：38万円/人','申請費用：2〜5万円/人','実費：渡航・住居等'];
-    result.note = country==='undecided'
-      ? '※国未定のためベトナム基準で算出しています'
-      : '';
+    result.initial_per = initial_per;
+    result.initial_min = Math.round(initial_per * headcount);
+    result.initial_max = Math.round(initial_per * headcount);
+    result.monthly     = 30000 * headcount;
+    result.org         = getSendingOrg(country, system);
+    result.items = [
+      { label:'紹介料', val:'28万円/人' },
+      { label:'雇い入れ健診', val:'実費（約1.5万円/人）' },
+      { label:'入国渡航費', val:'実費（約6万円/人）' },
+      { label:'出迎え交通費', val: country==='indonesia' ? '実費（約3.5万円/人）成田/羽田着' : '実費（約2.5万円/人）' },
+      { label:'在留資格認定証明書手数料', val:'0円（請求なし）' },
+    ];
+    result.note = country==='undecided' ? '※国未定のためベトナム基準で算出しています' : '';
   }
 
+  // ── 育成就労 ──
   if(system==='r_ikusei'){
-    const intro = 380000;
-    const monthly = 30000;
-    let misc_min = 150000;
-    let misc_max = 450000;
+    const shokai = 280000;
+    const kensin = 15000;
+    const tokou  = 60000;
+    const mukae  = country==='indonesia' ? 35000 : 25000;
+    const initial_per = shokai + kensin + tokou + mukae;
 
-    if(country==='indonesia'){ misc_min*=0.9; misc_max*=0.9; }
-    if(country==='myanmar'){   misc_min*=0.85; misc_max*=0.85; }
-
-    result.initial_min = Math.round((intro + 20000 + misc_min) * headcount);
-    result.initial_max = Math.round((intro + 60000 + misc_max) * headcount);
-    result.monthly     = monthly * headcount;
-    result.breakdown   = ['紹介料：38万円/人','申請費用：2〜6万円/人','実費：渡航・住居・入国準備等'];
+    result.initial_per = initial_per;
+    result.initial_min = Math.round(initial_per * headcount);
+    result.initial_max = Math.round(initial_per * headcount);
+    result.monthly     = 30000 * headcount;
+    result.org         = getSendingOrg(country, system);
+    result.items = [
+      { label:'紹介料', val:'28万円/人' },
+      { label:'雇い入れ健診', val:'実費（約1.5万円/人）' },
+      { label:'入国渡航費', val:'実費（約6万円/人）' },
+      { label:'出迎え交通費', val: country==='indonesia' ? '実費（約3.5万円/人）成田/羽田着' : '実費（約2.5万円/人）' },
+      { label:'在留資格認定証明書手数料', val:'0円（請求なし）' },
+    ];
     result.note = '※育成就労（2027年4月施行予定）は制度確定前のため実費が変動する可能性があります';
   }
 
+  // ── 技術・人文知識・国際業務 ──
   if(system==='r_gijin'){
     const jp = S.jp;
-    let base_min = 500000, base_max = 700000;
-    if(jp==='work'||jp==='daily'){ base_min=450000; base_max=600000; }
-    if(jp==='biz'){                base_min=600000; base_max=800000; }
+    // 国別・日本語レベル別の紹介料（想定年収×25%）
+    // ベトナム：N3=840,000 / N2〜N1=840,000〜1,120,000（WEB面接は紹介料込・現地ツアーは別途30万/社）
+    // インドネシア：N4=770,000
+    // バングラデシュ：N5=700,000
+    let shokai = 840000; // デフォルト（ベトナムN3、WEB面接）
+    let toureFee = 0;
+    if(country==='indonesia'||country==='myanmar'){
+      shokai = 770000; // N4想定 年収308万×25%
+    } else if(country==='bangladesh'){
+      shokai = 700000; // N5想定 年収280万×25%
+    } else {
+      // ベトナム・未定：日本語レベルで分岐
+      if(jp==='biz')       shokai = 980000;  // N2想定 年収392万×25%
+      else if(jp==='work') shokai = 840000;  // N3想定 年収336万×25%
+      else                 shokai = 700000;  // N5想定 年収280万×25%
+      // 現地ツアー面接は別途30万/社（ベトナムのみ）
+      toureFee = (S.gijinInterview==='tour') ? 300000 : 0;
+    }
+    const kensin = 15000;
+    const tokou  = 60000;
+    const mukae  = (country==='indonesia'||country==='myanmar'||country==='bangladesh') ? 35000 : 25000;
 
-    result.initial_min = Math.round((base_min + 20000 + 100000) * headcount);
-    result.initial_max = Math.round((base_max + 30000 + 300000) * headcount);
+    result.initial_per = shokai + kensin + tokou + mukae + toureFee;
+    result.initial_min = Math.round((shokai + kensin + tokou + mukae) * headcount) + toureFee;
+    result.initial_max = Math.round((shokai + kensin + tokou + mukae) * headcount) + toureFee;
     result.monthly     = 0;
-    result.breakdown   = ['紹介料：想定年収の25%（約50〜80万円/人）','申請費用：2〜3万円/人','実費：10〜30万円/人'];
-    result.note = '※日本語レベル・職種・経験により変動します';
+    result.org         = getSendingOrg(country, system);
+
+    // 紹介料の説明を国別に
+    let shokaiDesc = '';
+    if(country==='indonesia'||country==='myanmar') shokaiDesc = '770,000円（N4想定・年収308万×25%）';
+    else if(country==='bangladesh')                shokaiDesc = '700,000円（N5想定・年収280万×25%）';
+    else if(jp==='biz')                            shokaiDesc = '980,000円（N2想定・年収392万×25%）';
+    else if(jp==='work')                           shokaiDesc = '840,000円（N3想定・年収336万×25%）';
+    else                                           shokaiDesc = '700,000円（N5想定・年収280万×25%）';
+
+    result.items = [
+      { label:'紹介料', val: shokaiDesc },
+      { label:'雇い入れ健診', val:'15,000円（実費）' },
+      { label:'入国渡航費', val:'60,000円（実費）' },
+      { label:'出迎え交通費', val: mukae.toLocaleString()+'円（実費）'+((country==='indonesia'||country==='myanmar'||country==='bangladesh')?'　成田/羽田着':'') },
+      { label:'在留資格認定証明書手数料', val:'0円（請求なし）' },
+    ];
+    if(toureFee>0){
+      result.items.push({ label:'ベトナム現地面接費（ツアー）', val:'300,000円/社（航空券込）' });
+    }
+    const interviewLabel = toureFee > 0
+      ? '面接方法：現地ツアー（別途300,000円/社・航空券込）'
+      : (country==='vietnam'||country==='undecided')
+        ? '面接方法：WEB面接（紹介料に含む）'
+        : '面接方法：WEB面接（紹介料に含む）';
+    result.note = '※日本語レベル・職種・経験により紹介料が変動します。' + interviewLabel + '。月額管理費なし。';
   }
 
+  // ── 技能実習 ──
   if(system==='r_ginou'){
-    result.initial_min = Math.round(200000 * headcount);
-    result.initial_max = Math.round(500000 * headcount);
+    // 技能実習：国別に初期費用が異なる
+    // ベトナム：369,920円　インドネシア・バングラ：379,920円（出迎え交通費が35,000円）
+    const ginouMukae = (country==='indonesia'||country==='myanmar'||country==='bangladesh') ? 35000 : 25000;
+    const ginouInitial = 10000+10000+10000+0+15000+15000+15000+60000+ginouMukae+60000+10000+20000+70000+24720+3900+21300;
+    result.initial_per = ginouInitial;
+    result.initial_min = Math.round(ginouInitial * headcount);
+    result.initial_max = Math.round(ginouInitial * headcount);
     result.monthly     = 30000 * headcount;
-    result.breakdown   = ['監理費：月2〜5万円/人','送出機関手数料・渡航費等'];
-    result.note = '※技能実習は助成金よりも受入費用の確認が重要です。個別見積りをご依頼ください';
+    result.org         = getSendingOrg(country, system);
+    result.items = [
+      { label:'組合出資金（社）', val:'10,000円（脱退時返却）' },
+      { label:'組合年会費（社）', val:'10,000円' },
+      { label:'在留資格認定証明書交付申請手数料', val:'10,000円' },
+      { label:'雇入れ時健康診断費用', val:'15,000円（実費）' },
+      { label:'国外事前講習委託費', val:'15,000円' },
+      { label:'法的講習費用', val:'15,000円' },
+      { label:'入国渡航費', val:'60,000円（実費）' },
+      { label:'入国時出迎え交通費', val: ginouMukae.toLocaleString()+'円（実費）'+(country==='indonesia'?'　成田/羽田着':'') },
+      { label:'入国当初講習手当（1ヶ月分）', val:'60,000円（本人支給）' },
+      { label:'昼食手当', val:'10,000円（実費）' },
+      { label:'集合研修所交通費', val:'20,000円' },
+      { label:'集合研修及び宿泊費用', val:'70,000円（実費）' },
+      { label:'外国人技能実習生保険料', val:'24,720円（3年間分）' },
+      { label:'技能実習計画認定申請手数料', val:'3,900円' },
+      { label:'技能検定受験料', val:'21,300円（実費）' },
+    ];
+    result.note = '※技能実習は廃止予定（経過措置あり）。育成就労・特定技能への移行計画を並行検討することをお勧めします。';
   }
 
   return result;
@@ -1614,22 +1769,65 @@ function calcEstimate(){
 function renderEstimate(res){
   if(!res.initial_min && !res.monthly) return '';
   const fmt = n => n.toLocaleString('ja-JP');
+  const country = S.country || 'undecided';
+  const system = S.system;
+
+  // インドネシア選択時の補足文
+  const indonesiaNoteHTML = country === 'indonesia'
+    ? `<div class="estimate-country-note">※インドネシアは近年、安定した人材供給と定着性の観点から、採用バランスの良い国として選ばれるケースが増えています</div>`
+    : '';
+
+  // ベトナム以外の国選択時（選択肢がある旨）
+  const altCountryNoteHTML = (country !== 'undecided' && country !== 'vietnam')
+    ? `<div class="estimate-country-note" style="background:#F0FDF4;border-color:#86EFAC;color:#166534;">※採用状況や時期により、他国からの採用が選択されるケースもありますが、今回はご選択に基づき算出しています</div>`
+    : '';
+
+  // 1人あたりの初期費用
+  const perPersonHTML = res.initial_per
+    ? `<div style="font-size:12px;color:var(--teal);font-weight:700;margin-bottom:4px;">1人あたり：約${fmt(Math.round(res.initial_per/10000))}万円〜（目安）</div>`
+    : '';
+
+  // 送り出し機関名
+  const orgHTML = res.org
+    ? `<div style="font-size:12px;color:var(--gray);margin-top:4px;">窓口：${res.org}</div>`
+    : '';
+
+  // 費用項目リスト
+  const itemsHTML = res.items.length > 0
+    ? `<div style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px;">${
+        res.items.map(it=>`<div style="display:flex;justify-content:space-between;font-size:11.5px;padding:2px 0;"><span style="color:var(--gray);">${it.label}</span><span style="color:var(--dark);font-weight:600;">${it.val}</span></div>`).join('')
+      }</div>`
+    : '';
+
+  const systemNoteHTML = `<div style="font-size:11px;color:var(--gray);margin-top:6px;">※国の選択は費用や採用方法に影響します。制度は採用条件に基づき判定されています</div>`;
+
+  const headcount = S.hireNum || 1;
+  const totalLabel = headcount > 1
+    ? `${headcount}名合計：約${fmt(Math.round(res.initial_min/10000))}万円〜${fmt(Math.round(res.initial_max/10000))}万円程度（目安）`
+    : `初期費用目安：約${fmt(Math.round(res.initial_min/10000))}万円〜（目安）`;
+
   return `
     <div class="estimate-box">
       <div class="estimate-title">💴 想定コスト（概算）</div>
+      ${indonesiaNoteHTML}
+      ${altCountryNoteHTML}
       <div class="estimate-section">
-        <div class="estimate-label">【初期費用】</div>
-        ${res.breakdown.map(b=>`<div class="estimate-item">・${b}</div>`).join('')}
-        <div class="estimate-total">▶ 初期合計：¥${fmt(res.initial_min)} 〜 ¥${fmt(res.initial_max)}</div>
+        <div class="estimate-label">【初期費用（1年目）】</div>
+        ${perPersonHTML}
+        <div class="estimate-total">▶ ${totalLabel}</div>
+        <div style="font-size:11px;color:var(--gray);margin-top:4px;">※条件・時期により変動します</div>
+        ${itemsHTML}
+        ${orgHTML}
       </div>
       <div class="estimate-section">
-        <div class="estimate-label">【月額費用】</div>
-        <div class="estimate-item">${res.monthly>0?`・管理費：¥${fmt(res.monthly)}/月`:'・なし'}</div>
+        <div class="estimate-label">【月額管理費】</div>
+        <div class="estimate-item">${res.monthly>0?`<strong>${fmt(Math.round(res.monthly/10000))}万円/月</strong>（${S.hireNum||1}名分）`:'なし'}</div>
       </div>
       ${res.note?`<div class="estimate-country-note">${res.note}</div>`:''}
+      ${systemNoteHTML}
       <div class="estimate-caution">
-        ※実費は国・時期・条件により変動します<br>
-        ※正式なお見積は個別に算出いたします
+        ※本概算は判断材料としてご提示しています<br>
+        ※詳細お見積はヒアリング後に個別算出いたします
       </div>
     </div>`;
 }
@@ -2301,6 +2499,7 @@ function buildSummary(){
           <div id="save-deal-result"></div>
         </div>
         <div class="cta-area">
+          <button class="cta-dl" onclick="openEstModal()" style="background:linear-gradient(135deg,#1E2761,#2563AB);">📄 見積書を作成</button>
           <button class="cta-dl" onclick="downloadExcel()">📥 Excelで保存</button>
           <button class="cta-print" onclick="printHearingSheet()">🖨️ ヒアリングシートをPDF保存</button>
           <button class="cta-reset" onclick="reset()">↺ やり直す</button>
@@ -2313,6 +2512,227 @@ function buildSummary(){
   document.getElementById('sec-r').classList.add('active');
   renderProg();
   window.scrollTo({top:0,behavior:'smooth'});
+}
+
+
+// ════ 見積書モーダル ════
+function openEstModal(){
+  const est = calcEstimate();
+  const s = S;
+  const company = s.company || '（会社名）';
+  const hc = s.hireNum || 1;
+  const sysLabel = {
+    r_overseas:'特定技能（海外採用）', r_domestic:'特定技能（国内採用）',
+    r_ikusei:'育成就労', r_gijin:'技術・人文知識・国際業務', r_ginou:'技能実習'
+  }[s.system] || s.system || '（制度）';
+  const countryLabel = {vietnam:'ベトナム',indonesia:'インドネシア',myanmar:'ミャンマー',bangladesh:'バングラデシュ',undecided:'未定'}[s.country||'undecided'] || '未定';
+  const org = est.org || '海外送り出し機関';
+
+  // 1年目 一次費用の明細
+  const isGijin = s.system === 'r_gijin';
+  const isGinou = s.system === 'r_ginou';
+  const isIndonesia = (s.country === 'indonesia');
+  const isBangladesh = (s.country === 'bangladesh');
+  const isMukae35 = isIndonesia || isBangladesh || s.country === 'myanmar';
+
+  const monthly = isGijin ? 0 : isGinou ? (prices.kanri + prices.okuri) * hc : 30000 * hc;
+
+  // 今日の日付
+  const today = new Date();
+  const dateStr = today.getFullYear()+'年'+(today.getMonth()+1)+'月'+today.getDate()+'日';
+
+  // 明細行HTML（全セルcontenteditable、金額はリアルタイム再計算）
+  function row(no, label, qty, unit, price, note){
+    const amt = qty * price;
+    const priceDisp = price === 0 ? '-' : price.toLocaleString();
+    const amtDisp   = price === 0 ? '-' : amt.toLocaleString();
+    const note0html  = price === 0 ? '<span style="color:#0D9488;font-size:9px;display:block;">※請求なし</span>' : '';
+    const noteHtml   = note ? `<span style="color:#94A3B8;font-size:9px;display:block;">${note}</span>` : '';
+    return `<tr>
+      <td class="est-c" style="width:28px;"><span contenteditable>${no}</span></td>
+      <td><span contenteditable>${label}</span>${note0html}${noteHtml}</td>
+      <td class="est-c" style="width:42px;"><span class="est-qty" contenteditable oninput="recalcEstimate()">${qty}</span></td>
+      <td class="est-c" style="width:32px;">${unit}</td>
+      <td class="est-r" style="width:86px;"><span class="est-price" contenteditable oninput="recalcEstimate()">${priceDisp}</span></td>
+      <td class="est-c" style="width:36px;">10%</td>
+      <td class="est-r est-amt" style="width:84px;">${amtDisp}</td>
+    </tr>`;
+  }
+
+  function secHd(label){
+    return `<tr class="est-sec-hd"><td colspan="7" style="padding:5px 8px;">　${label}</td></tr>`;
+  }
+
+  // 一次費用 行
+  let init1Rows = '';
+  let init1Total = 0;
+  if(isGijin){
+    // 国別紹介料
+    let gShokai = 840000;
+    const gJp = s.jp;
+    const gC  = s.country||'undecided';
+    if(gC==='indonesia'||gC==='myanmar') gShokai = 770000;
+    else if(gC==='bangladesh')           gShokai = 700000;
+    else if(gJp==='biz')                 gShokai = 980000;
+    else if(gJp==='work')                gShokai = 840000;
+    else                                 gShokai = 700000;
+    const gMukae = (gC==='indonesia'||gC==='myanmar'||gC==='bangladesh') ? 35000 : 25000;
+    const gTour  = (gC==='vietnam'||gC==='undecided') && s.gijinInterview==='tour' ? 300000 : 0;
+
+    // 紹介料の説明
+    let shokaiNote = '※日本語・スキルレベルにより変動';
+    if(gC==='indonesia'||gC==='myanmar') shokaiNote = 'N4想定・年収308万×25%';
+    else if(gC==='bangladesh')           shokaiNote = 'N5想定・年収280万×25%';
+    else if(gJp==='biz')                 shokaiNote = 'N2想定・年収392万×25%';
+    else if(gJp==='work')                shokaiNote = 'N3想定・年収336万×25%';
+    else                                 shokaiNote = 'N5想定・年収280万×25%';
+
+    init1Rows += row('①','紹介料（年収×25%）',hc,'名',gShokai, shokaiNote);
+    init1Rows += row('②','雇い入れ時健康診断費用',hc,'名',15000,'実費');
+    init1Rows += row('③','入国渡航費',hc,'名',60000,'実費・航空チケット等');
+    init1Rows += row('④','入国時出迎え交通費',hc,'名',gMukae,(gC==='indonesia'||gC==='myanmar'||gC==='bangladesh')?'実費・成田/羽田着':'実費・就業場所により変動');
+    init1Rows += row('⑤','在留資格認定証明書交付申請手数料',hc,'名',0,'');
+    if(gTour>0){
+      init1Rows += row('⑥','ベトナム現地面接費（ツアー）',1,'社',gTour,'航空券込・別途請求');
+    }
+    init1Total = (gShokai + 15000 + 60000 + gMukae) * hc + gTour;
+  } else if(isGinou){
+    // 技能実習は月額メインなので初期費用は参考程度
+    init1Rows += row('①','組合出資金',1,'社',10000,'脱退時返却');
+    init1Rows += row('②','組合年会費',1,'社',10000,'');
+    init1Rows += row('③','在留資格認定証明書交付申請手数料',hc,'名',0,'');
+    init1Rows += row('④','雇入れ時健康診断費用',hc,'名',15000,'実費');
+    init1Rows += row('⑤','実習生入国渡航費',hc,'名',60000,'実費・航空チケット等');
+    init1Rows += row('⑥','入国時出迎え交通費',hc,'名',isIndonesia?35000:25000,'実費');
+    init1Total = (10000+10000+(15000+60000+(isIndonesia?35000:25000))*hc);
+  } else {
+    init1Rows += row('①','在留資格認定証明書交付申請手数料',hc,'名',prices.zaiyuu,'');
+    init1Rows += row('②','雇い入れ時健康診断費用',hc,'名',prices.kensin,'実費');
+    init1Rows += row('③','入国渡航費',hc,'名',prices.tokou,'実費・航空チケット等');
+    init1Rows += row('④','入国時出迎え交通費',hc,'名',prices.mukae,isIndonesia?'実費・成田/羽田着':'実費・就業場所により変動');
+    init1Rows += row('⑤','紹介料',hc,'名',prices.shokai,'');
+    init1Total = (prices.kensin + prices.tokou + prices.mukae + prices.shokai) * hc;
+  }
+
+  // 月額費用 行
+  let monthlyRows = '';
+  let monthlyTotal = 0;
+  if(isGijin){
+    monthlyRows = `<tr class="est-sec-hd"><td colspan="7" style="padding:5px 8px; color:#64748B;">　※技術・人文知識・国際業務は月額管理費なし</td></tr>`;
+  } else if(isGinou){
+    monthlyRows += row('A','当組合技能実習生監理費',hc,'名',25000,'毎月月末締め');
+    monthlyRows += row('B','送り出し機関管理費',hc,'名',5000,'毎月月末締め');
+    monthlyTotal = 30000*hc;
+  } else {
+    monthlyRows += row('A','管理支援費',hc,'名',30000,'毎月月末締め');
+    monthlyTotal = 30000*hc;
+  }
+
+  const subTotal = init1Total + monthlyTotal;
+  const tax = Math.round(subTotal * 0.1);
+  const grand = subTotal + tax;
+
+  const content = `
+    <div class="est-doc-title">見　積　書</div>
+    <div class="est-header">
+      <div class="est-to">
+        <div class="est-to-name" style="display:flex;align-items:baseline;gap:8px;">
+          <span contenteditable style="min-width:240px;font-size:15px;font-weight:700;">${company}</span>
+          <span style="font-size:14px;font-weight:700;flex-shrink:0;">　御中</span>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:#64748B;line-height:2.4;">
+          <span style="color:#94A3B8;">件名：</span><span contenteditable style="font-weight:700;color:#1E293B;">${sysLabel}　外国人紹介・支援サービス</span><br>
+          <span style="color:#94A3B8;">採用人数：</span><span contenteditable style="font-weight:700;color:#1E293B;" oninput="recalcEstimate()">${hc}</span> 名
+        </div>
+      </div>
+      <div class="est-from">
+        <strong>株式会社トクシントラスト</strong>
+        〒708-0004　岡山県津山市山北630-2<br>
+        TEL：090-4889-6321<br>
+        mail：trust.okayama@tokusin.jp<br>
+        担当：<span contenteditable>清水</span><br>
+        見積日：<span contenteditable>${dateStr}</span><br>
+        有効期限：<span contenteditable>御見積後 1ヶ月</span>
+      </div>
+    </div>
+
+    <div class="est-total-box">
+      <div class="label">お見積合計金額（税込）</div>
+      <div class="amount" id="est-grand-disp">¥${grand.toLocaleString()}</div>
+    </div>
+
+    <table class="est-table">
+      <thead>
+        <tr>
+          <th style="width:28px;">No.</th>
+          <th style="text-align:left;">摘　要</th>
+          <th style="width:42px;">数量</th>
+          <th style="width:32px;">単位</th>
+          <th style="width:86px;">単価（税抜）</th>
+          <th style="width:36px;">税率</th>
+          <th style="width:84px;">金額（税抜）</th>
+        </tr>
+      </thead>
+      <tbody id="est-tbody">
+        ${secHd('■ 一次費用（1年目）')}
+        ${init1Rows}
+        <tr class="est-sub"><td colspan="6" style="text-align:right;font-size:10px;padding:5px 8px;">一次費用　小計</td><td class="est-r" id="sub1-disp" style="padding:5px 8px;">${init1Total.toLocaleString()}</td></tr>
+        <tr><td colspan="7" style="height:8px;"></td></tr>
+        ${secHd('■ 月額管理費')}
+        ${monthlyRows}
+        ${monthlyTotal>0?`<tr class="est-sub"><td colspan="6" style="text-align:right;font-size:10px;padding:5px 8px;">月額管理費　小計</td><td class="est-r" id="sub2-disp" style="padding:5px 8px;">${monthlyTotal.toLocaleString()}</td></tr>`:''}
+        <tr><td colspan="7" style="height:10px;border-bottom:1px solid #E2E8F0;"></td></tr>
+        <tr class="est-tax"><td colspan="6" style="text-align:right;padding:5px 8px;">税抜合計</td><td class="est-r" id="subtotal-disp" style="padding:5px 8px;">${subTotal.toLocaleString()}</td></tr>
+        <tr class="est-tax"><td colspan="6" style="text-align:right;padding:5px 8px;">消費税（10%）</td><td class="est-r" id="tax-disp" style="padding:5px 8px;">${tax.toLocaleString()}</td></tr>
+        <tr class="est-grand"><td colspan="6" style="text-align:right;padding:7px 8px;">お見積合計金額（税込）</td><td class="est-r" style="padding:7px 8px;" id="grand-disp">${grand.toLocaleString()}</td></tr>
+      </tbody>
+    </table>
+
+    <div class="est-notes">
+      <div contenteditable>○　在留資格認定証明書交付申請手数料は弊社にて対応のため請求なし。</div>
+      <div contenteditable>○　健診・渡航費・出迎え交通費等の実費項目は、条件・時期・就業場所により変動する場合があります。</div>
+      <div contenteditable>○　管理支援費は採用後毎月月末締めにて請求いたします。</div>
+      <div contenteditable>○　期間更新時に申請手数料（印紙代）を別途請求させていただきます。</div>
+      <div contenteditable>○　2年目以降の在留更新費用については別途ご案内いたします。</div>
+    </div>
+  `;
+
+  document.getElementById('est-doc-content').innerHTML = content;
+  document.getElementById('est-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeEstModal(){
+  document.getElementById('est-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function recalcEstimate(){
+  let total = 0;
+  document.querySelectorAll('#est-tbody tr').forEach(tr=>{
+    const priceEl = tr.querySelector('.est-price');
+    const qtyEl   = tr.querySelector('.est-qty');
+    const amtCell = tr.querySelector('.est-amt');
+    if(!priceEl||!amtCell) return;
+    const priceStr = priceEl.textContent.replace(/[^0-9]/g,'');
+    const qtyStr   = qtyEl ? qtyEl.textContent.replace(/[^0-9]/g,'') : '1';
+    const price = parseInt(priceStr)||0;
+    const qty   = parseInt(qtyStr)||1;
+    const amt = price * qty;
+    amtCell.textContent = price===0 ? '-' : amt.toLocaleString();
+    if(price>0) total += amt;
+  });
+  const tax = Math.round(total*0.1);
+  const grand = total+tax;
+  const el = id => document.getElementById(id);
+  if(el('subtotal-disp')) el('subtotal-disp').textContent = total.toLocaleString();
+  if(el('tax-disp'))      el('tax-disp').textContent = tax.toLocaleString();
+  if(el('grand-disp'))    el('grand-disp').textContent = grand.toLocaleString();
+  if(el('est-grand-disp')) el('est-grand-disp').textContent = '¥'+grand.toLocaleString();
+}
+
+function printEstimate(){
+  window.print();
 }
 
 // ════ 起動 ════
