@@ -247,10 +247,9 @@ main{max-width:760px;margin:0 auto;padding:28px 20px 100px;}
 
 @media print{
   @page { margin: 10mm; }
-  body > *:not(#est-modal){display:none!important;}
   #est-modal{position:static!important;background:white!important;padding:0!important;display:block!important;}
   #est-modal-inner{box-shadow:none!important;max-width:100%!important;border-radius:0!important;}
-  .est-toolbar,.est-no-print,.est-discount-row{display:none!important;}
+  .est-toolbar,.est-no-print{display:none!important;}
   [contenteditable]{border:none!important;background:transparent!important;}
   body{background:white;}
 }
@@ -2701,13 +2700,19 @@ function openEstModal(){
   `;
 
   document.getElementById('est-doc-content').innerHTML = content;
-  document.getElementById('est-modal').classList.add('open');
+  const modal = document.getElementById('est-modal');
+  modal.style.display = 'flex';
+  modal.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
 function closeEstModal(){
-  document.getElementById('est-modal').classList.remove('open');
+  const modal = document.getElementById('est-modal');
+  modal.classList.remove('open');
+  modal.style.display = 'none';
   document.body.style.overflow = '';
+  // 念のためbodyのスタイルもリセット
+  document.body.style.position = '';
 }
 
 function recalcEstimate(){
@@ -2735,9 +2740,21 @@ function recalcEstimate(){
 }
 
 function printEstimate(){
+  // 印刷前にbodyの他要素を隠す
+  document.querySelectorAll('body > *:not(#est-modal)').forEach(el => {
+    el._prevDisplay = el.style.display;
+    el.style.display = 'none';
+  });
+  
   window.print();
-  // 印刷ダイアログを閉じた後にモーダルを閉じる
-  setTimeout(() => closeEstModal(), 500);
+  
+  // 印刷後に復元してモーダルを閉じる
+  setTimeout(() => {
+    document.querySelectorAll('body > *:not(#est-modal)').forEach(el => {
+      el.style.display = el._prevDisplay || '';
+    });
+    closeEstModal();
+  }, 500);
 }
 
 // ════ 起動 ════
