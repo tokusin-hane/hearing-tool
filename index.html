@@ -293,6 +293,14 @@ main{max-width:760px;margin:0 auto;padding:28px 20px 100px;}
 .est-notes{font-size:10px;color:#64748B;line-height:2;border-top:1px solid #E2E8F0;padding-top:10px;margin-top:6px;}
 footer{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid var(--border);padding:8px 20px;font-size:11px;color:var(--gray);text-align:center;}
 footer strong{color:var(--gold);}
+/* スクロールトップボタン */
+#scroll-top-btn{position:fixed;bottom:60px;right:20px;width:44px;height:44px;border-radius:50%;background:var(--teal);color:white;border:none;font-size:20px;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,0.2);z-index:500;transition:.2s;touch-action:manipulation;}
+#scroll-top-btn:hover{background:#0F766E;transform:translateY(-2px);}
+/* 前へボタン */
+.prev-btn{background:var(--lgray);color:var(--gray);border:1.5px solid var(--border);border-radius:11px;font-family:inherit;font-size:14px;font-weight:600;padding:11px 20px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:6px;touch-action:manipulation;}
+.prev-btn:hover{background:var(--border);color:var(--dark);}
+.step-nav{display:flex;gap:10px;margin-top:12px;}
+.step-nav .next-btn{flex:1;}
 </style>
 </head>
 <body>
@@ -571,7 +579,10 @@ footer strong{color:var(--gold);}
       </div>
     </div>
   </div>
-  <button class="next-btn on" onclick="go(3)">次へ　→</button>
+  <div class="step-nav">
+    <button class="prev-btn" onclick="jumpTo(1)">← 前へ</button>
+    <button class="next-btn on" onclick="go(3)">次へ　→</button>
+  </div>
 </div>
 
 <!-- STEP3 採用評価・労働条件 -->
@@ -629,14 +640,20 @@ footer strong{color:var(--gold);}
       <textarea id="f-memo" placeholder="社風・現場の雰囲気・チームの状況・前任者の退職理由 など…"></textarea>
     </div>
   </div>
-  <button class="next-btn on" onclick="go(4)">次へ　→</button>
+  <div class="step-nav">
+    <button class="prev-btn" onclick="jumpTo(2)">← 前へ</button>
+    <button class="next-btn on" onclick="go(4)">次へ　→</button>
+  </div>
 </div>
 
 <!-- STEP4 推奨制度（自動） -->
 <div class="sec" id="sec-4">
   <div id="system-display"></div>
   <div style="margin-top:12px">
-    <button class="next-btn on" onclick="go(5)">次：助成金シミュレーション　→</button>
+    <div class="step-nav">
+      <button class="prev-btn" onclick="jumpTo(3)">← 前へ</button>
+      <button class="next-btn on" onclick="go(5)">次：助成金シミュレーション　→</button>
+    </div>
   </div>
 </div>
 
@@ -659,7 +676,10 @@ footer strong{color:var(--gold);}
         <div><div class="ck-label">🔍 まず試用雇用から始めたい</div><div class="ck-sub">3ヶ月試用後に本採用を検討</div></div></div>
     </div>
   </div>
-  <button class="next-btn on" onclick="buildSummary()">提案サマリーを作成　→</button>
+  <div class="step-nav">
+    <button class="prev-btn" onclick="jumpTo(4)">← 前へ</button>
+    <button class="next-btn on" onclick="buildSummary()">提案サマリーを作成　→</button>
+  </div>
 </div>
 
 <!-- サマリー -->
@@ -668,6 +688,7 @@ footer strong{color:var(--gold);}
 </div>
 
 </main>
+<button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="トップへ戻る">↑</button>
 <footer>
   ⚠ 本ツールで表示される内容は参考情報です。助成金の支給額・対象可否は年度・条件等により異なるため、必ず行政書士・社労士等の専門家にご確認ください。
 </footer>
@@ -1646,7 +1667,7 @@ function calcEstimate(){
     result.monthly     = 30000 * headcount;
     result.org         = getSendingOrg(country, system);
     result.items = [
-      { label:'紹介料', val:'28万円/人' },
+      { label:'紹介料', val:'25〜30万円程度（要相談）' },
       { label:'雇い入れ健診', val:'実費（約1.5万円/人）' },
       { label:'入国渡航費', val:'実費（約6万円/人）' },
       { label:'出迎え交通費', val: country==='indonesia' ? '実費（約3.5万円/人）成田/羽田着' : '実費（約2.5万円/人）' },
@@ -1669,7 +1690,7 @@ function calcEstimate(){
     result.monthly     = 30000 * headcount;
     result.org         = getSendingOrg(country, system);
     result.items = [
-      { label:'紹介料', val:'28万円/人' },
+      { label:'紹介料', val:'25〜30万円程度（要相談）' },
       { label:'雇い入れ健診', val:'実費（約1.5万円/人）' },
       { label:'入国渡航費', val:'実費（約6万円/人）' },
       { label:'出迎え交通費', val: country==='indonesia' ? '実費（約3.5万円/人）成田/羽田着' : '実費（約2.5万円/人）' },
@@ -1867,92 +1888,79 @@ async function supaPost(table, body){
 async function saveDealToSupabase(){
   const btn = document.getElementById('save-deal-btn');
   btn.disabled = true;
-  btn.textContent = '保存中...';
+  btn.textContent = '記録中...';
 
   try{
-    // 1. companies に企業を登録
-    const compData = await supaPost('companies', {
-      name:            S.company || '（未入力）',
-      industry:        S.industry || '',
-      area:            S.area || '',
-      contact_person:  S.person || '',
-      phone:           S.tel || '',
-      email:           S.email || '',
-      status:          'hearing_done',
-      temperature:     'warm'
+    // 1. hearing_cases にヒアリング案件を記録
+    const caseData = await supaPost('hearing_cases', {
+      created_by:   _currentUser?.id || null,
+      company_name: S.company || '（未入力）',
+      industry:     S.industry || '',
+      process:      S.process || '',
+      size:         S.size || '',
+      area:         S.area || '',
+      person_name:  S.person || '',
+      tel:          S.tel || '',
+      email:        S.email || '',
+      country:      S.country || 'undecided',
+      hire_num:     S.hireNum || 1,
+      system_id:    S.system || '',
+      jp_level:     S.jp || '',
+      purpose:      [...(S.purpose||[])],
+      skills:       S.skills || {},
+      weights:      S.weights || {},
+      timing:       S.timing || '',
+      sal_min:      S.salMin || '',
+      sal_max:      S.salMax || '',
+      hours:        S.hours || '',
+      holiday:      S.holiday || '',
+      memo:         S.memo || '',
+      status:       'proposal_done'
     });
-    const companyId = compData[0].id;
+    const caseId = caseData[0].id;
 
-    // 2. deals に案件を登録
-    const dealData = await supaPost('deals', {
-      company_id:     companyId,
-      system:         S.system || '',
-      status:         'prospect',
-      headcount:      S.hireNum || 1,
-      country:        S.country || 'undecided',
-      japanese_level: S.jp || '',
-      temperature:    'warm',
-      memo:           S.memo || '',
-      created_by:     _currentUser?.id || null
-    });
-    const dealId = dealData[0].id;
-
-    // 3. estimates に見積を登録
+    // 2. hearing_estimates に見積を記録
     const est = calcEstimate();
     if(est.initial_min || est.monthly){
-      await supaPost('estimates', {
-        deal_id:     dealId,
-        initial_min: est.initial_min,
-        initial_max: est.initial_max,
-        monthly:     est.monthly,
-        system:      S.system || '',
-        note:        est.note || '',
-        is_formal:   false
+      await supaPost('hearing_estimates', {
+        case_id:       caseId,
+        system_id:     S.system || '',
+        country:       S.country || 'undecided',
+        hire_num:      S.hireNum || 1,
+        initial_total: est.initial_min || 0,
+        monthly_total: est.monthly || 0,
+        grand_total:   Math.round((est.initial_min||0) * 1.1 + (est.monthly||0)),
+        items:         est.items || [],
+        notes:         est.note || '',
+        status:        'draft'
       });
     }
 
-    // 4. requirement_checks に追加要件チェック結果を登録
-    const prefix = getActiveReqPrefix();
-    if(prefix){
-      const radios = document.querySelectorAll(`[name^="${prefix}_r"]`);
-      const seen = new Set();
-      for(const r of radios){
-        if(r.checked){
-          const item = r.closest('.extra-req-item');
-          if(!item) continue;
-          const titleEl = item.querySelector('.extra-req-item-title');
-          const memoEl  = item.querySelector('textarea');
-          const key = titleEl?.textContent?.trim();
-          if(!key || seen.has(key)) continue;
-          seen.add(key);
-          await supaPost('requirement_checks', {
-            deal_id:   dealId,
-            category:  prefix,
-            item_name: key,
-            status:    r.value,
-            memo:      memoEl?.value || ''
-          });
-        }
-      }
-    }
+    // 3. hearing_logs に活動ログを記録
+    await supaPost('hearing_logs', {
+      case_id: caseId,
+      user_id: _currentUser?.id || null,
+      action:  'hearing_completed',
+      note:    `${S.company} / ${S.system} / ${S.hireNum}名 / ${S.country}`
+    });
 
     // 成功表示
-    btn.textContent = '✅ 保存完了！';
+    btn.textContent = '✅ 記録完了！';
     btn.style.background = '#16A34A';
     document.getElementById('save-deal-result').innerHTML = `
       <div style="margin-top:10px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:9px;padding:12px 16px;font-size:13px;color:#15803D;line-height:1.8">
-        ✅ 案件をSupabaseに保存しました<br>
-        企業ID：${companyId.substring(0,8)}...<br>
-        案件ID：${dealId.substring(0,8)}...
+        ✅ ヒアリングを記録しました<br>
+        案件ID：${caseId.substring(0,8)}...<br>
+        <span style="font-size:11px;color:#64748B;">※営業ツールへのアクション入力は営業ツールで行ってください</span>
       </div>`;
 
   } catch(e) {
     btn.disabled = false;
-    btn.textContent = '💾 案件を保存する';
+    btn.textContent = '📋 ヒアリングを記録';
     btn.style.background = '';
     document.getElementById('save-deal-result').innerHTML = `
       <div style="margin-top:10px;background:#FEF2F2;border:1px solid #FCA5A5;border-radius:9px;padding:12px 16px;font-size:13px;color:#DC2626">
-        ❌ 保存に失敗しました：${e.message}
+        ❌ 記録に失敗しました：${e.message}
       </div>`;
     console.error(e);
   }
@@ -2201,7 +2209,11 @@ function printHearingSheet(){
     　トクシングループ　帰国後キャリア支援事業　ver.2.0　　作成日：${today}
   </div>
 </div>
-<script>window.onload=function(){window.print();}<\/script>
+<script>window.addEventListener('scroll', function(){
+  const btn = document.getElementById('scroll-top-btn');
+  if(btn) btn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+});
+window.onload=function(){window.print();}<\/script>
 </body></html>`;
 
   const blob = new Blob([html], {type:'text/html;charset=utf-8'});
@@ -2497,14 +2509,14 @@ function buildSummary(){
         <div style="margin-bottom:14px">
           <button id="save-deal-btn" onclick="saveDealToSupabase()"
             style="width:100%;background:linear-gradient(135deg,#1E3A8A,#2563AB);color:white;border:none;border-radius:11px;font-family:inherit;font-size:16px;font-weight:800;padding:16px 24px;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;gap:8px;">
-            💾 案件を保存する（営業管理に登録）
+            📋 ヒアリングを記録
           </button>
           <div id="save-deal-result"></div>
         </div>
         <div class="cta-area">
-          <button class="cta-dl" onclick="openEstModal()" style="background:linear-gradient(135deg,#1E2761,#2563AB);">📄 見積書を作成</button>
+          <button class="cta-dl" onclick="openEstModal()" style="background:linear-gradient(135deg,#1E2761,#2563AB);">📄 正式見積PDF出力</button>
           <button class="cta-dl" onclick="downloadExcel()">📥 Excelで保存</button>
-          <button class="cta-print" onclick="printHearingSheet()">🖨️ ヒアリングシートをPDF保存</button>
+          <button class="cta-print" onclick="printHearingSheet()">📄 提案書PDF出力</button>
           <button class="cta-reset" onclick="reset()">↺ やり直す</button>
         </div>
 
