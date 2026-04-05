@@ -1655,13 +1655,13 @@ function calcEstimate(){
 
   // ── 特定技能（海外・国内） ──
   if(system==='r_overseas'||system==='r_domestic'){
-    // 固定費（1人あたり）
-    const shokai = 280000;   // 紹介料（実態）
+    // 固定費（1人あたり）※本社準拠
+    const shokai = 380000;   // 紹介料（本社準拠）
+    const shinsei = 120000;  // 在留資格認定証明書交付申請手数料（本社準拠）
     const kensin = 15000;    // 雇い入れ健診（実費）
     const tokou  = 60000;    // 入国渡航費（実費・1年目のみ）
     const mukae  = country==='indonesia' ? 35000 : 25000; // 出迎え交通費（インドネシアは成田/羽田）
-    // 在留資格認定証明書手数料：0円（岡山が巻き取り）
-    const initial_per = shokai + kensin + tokou + mukae;
+    const initial_per = shokai + shinsei + kensin + tokou + mukae;
 
     result.initial_per = initial_per;
     result.initial_min = Math.round(initial_per * headcount);
@@ -1669,36 +1669,43 @@ function calcEstimate(){
     result.monthly     = 30000 * headcount;
     result.org         = getSendingOrg(country, system);
     result.items = [
-      { label:'紹介料', val:'25〜30万円程度（要相談）' },
+      { label:'紹介料', val:'380,000円' },
+      { label:'在留資格認定証明書交付申請手数料', val:'120,000円' },
       { label:'雇い入れ健診', val:'実費（約1.5万円/人）' },
       { label:'入国渡航費', val:'実費（約6万円/人）' },
       { label:'出迎え交通費', val: country==='indonesia' ? '実費（約3.5万円/人）成田/羽田着' : '実費（約2.5万円/人）' },
-      { label:'在留資格認定証明書手数料', val:'0円（請求なし）' },
     ];
     result.note = country==='undecided' ? '※国未定のためベトナム基準で算出しています' : '';
   }
 
   // ── 育成就労 ──
   if(system==='r_ikusei'){
-    const shokai = 280000;
-    const kensin = 15000;
-    const tokou  = 60000;
-    const mukae  = country==='indonesia' ? 35000 : 25000;
-    const initial_per = shokai + kensin + tokou + mukae;
-
-    result.initial_per = initial_per;
-    result.initial_min = Math.round(initial_per * headcount);
-    result.initial_max = Math.round(initial_per * headcount);
+    // 育成就労は技能実習の後継制度のため費用体系は技能実習準拠
+    const ikuseiMukae = country==='indonesia' ? 35000 : 25000;
+    const ikuseiInitial = 10000+10000+10000+0+15000+15000+15000+60000+ikuseiMukae+60000+10000+20000+70000+24720+3900+21300;
+    result.initial_per = ikuseiInitial;
+    result.initial_min = Math.round(ikuseiInitial * headcount);
+    result.initial_max = Math.round(ikuseiInitial * headcount);
     result.monthly     = 30000 * headcount;
     result.org         = getSendingOrg(country, system);
     result.items = [
-      { label:'紹介料', val:'25〜30万円程度（要相談）' },
-      { label:'雇い入れ健診', val:'実費（約1.5万円/人）' },
-      { label:'入国渡航費', val:'実費（約6万円/人）' },
-      { label:'出迎え交通費', val: country==='indonesia' ? '実費（約3.5万円/人）成田/羽田着' : '実費（約2.5万円/人）' },
-      { label:'在留資格認定証明書手数料', val:'0円（請求なし）' },
+      { label:'組合出資金（社）', val:'10,000円（脱退時返却）' },
+      { label:'組合年会費（社）', val:'10,000円' },
+      { label:'在留資格認定証明書交付申請手数料', val:'10,000円' },
+      { label:'雇入れ時健康診断費用', val:'15,000円（実費）' },
+      { label:'国外事前講習委託費', val:'15,000円' },
+      { label:'法的講習費用', val:'15,000円' },
+      { label:'入国渡航費', val:'60,000円（実費）' },
+      { label:'入国時出迎え交通費', val: ikuseiMukae.toLocaleString()+'円（実費）'+(country==='indonesia'?'　成田/羽田着':'') },
+      { label:'入国当初講習手当（1ヶ月分）', val:'60,000円（本人支給）' },
+      { label:'昼食手当', val:'10,000円（実費）' },
+      { label:'集合研修所交通費', val:'20,000円' },
+      { label:'集合研修及び宿泊費用', val:'70,000円（実費）' },
+      { label:'外国人技能実習生保険料', val:'24,720円（3年間分）' },
+      { label:'技能実習計画認定申請手数料', val:'3,900円' },
+      { label:'技能検定受験料', val:'21,300円（実費）' },
     ];
-    result.note = '※育成就労（2027年4月施行予定）は制度確定前のため実費が変動する可能性があります';
+    result.note = '※育成就労（2027年4月施行予定）は制度確定前のため実費が変動する可能性があります。費用体系は技能実習準拠で算出しています。';
   }
 
   // ── 技術・人文知識・国際業務 ──
@@ -2642,12 +2649,12 @@ function openEstModal(){
     init1Total = (10000+10000+(15000+60000+(isIndonesia?35000:25000))*hc);
   } else {
     const stdMukae = isMukae35 ? 35000 : 25000;
-    init1Rows += row('①','在留資格認定証明書交付申請手数料',hc,'名',0,'');
+    init1Rows += row('①','在留資格認定証明書交付申請手数料',hc,'名',120000,'');
     init1Rows += row('②','雇い入れ時健康診断費用',hc,'名',15000,'実費');
     init1Rows += row('③','入国渡航費',hc,'名',60000,'実費・航空チケット等');
     init1Rows += row('④','入国時出迎え交通費',hc,'名',stdMukae,isMukae35?'実費・成田/羽田着':'実費・就業場所により変動');
-    init1Rows += row('⑤','紹介料',hc,'名',280000,'');
-    init1Total = (15000 + 60000 + stdMukae + 280000) * hc;
+    init1Rows += row('⑤','紹介料',hc,'名',380000,'');
+    init1Total = (120000 + 15000 + 60000 + stdMukae + 380000) * hc;
   }
 
   // 月額費用 行
